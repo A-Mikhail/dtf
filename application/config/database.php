@@ -61,7 +61,7 @@ return array(
 
 	'connections' => array(
 		'sqlsrv' => array(
-			'driver'   => 'sqlsrv',
+			'driver'   => 'mysql',
 			'host'     => '77.243.80.216',
 			'database' => 'dtf',
 			'username' => 'mikhail',
