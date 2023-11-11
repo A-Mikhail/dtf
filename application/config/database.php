@@ -60,18 +60,12 @@ return array(
 	*/
 
 	'connections' => array(
-
-		'sqlite' => array(
-			'driver'   => 'sqlite',
-			'database' => 'application',
-			'prefix'   => '',
-		),	
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',
-			'host'     => '',
-			'database' => '',
-			'username' => '',
-			'password' => '',
+			'host'     => '77.243.80.216',
+			'database' => 'dtf',
+			'username' => 'mikhail',
+			'password' => '509777Ss',
 			'prefix'   => '',
 		),
 
