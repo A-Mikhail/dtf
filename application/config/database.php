@@ -62,10 +62,11 @@ return array(
 	'connections' => array(
 		'sqlsrv' => array(
 			'driver'   => 'mysql',
-			'host'     => '77.243.80.216',
+			'host'     => 'localhost',
 			'database' => 'dtf',
 			'username' => 'mikhail',
 			'password' => '509777Ss',
+			'charset'  => 'utf8',
 			'prefix'   => '',
 		),
 
