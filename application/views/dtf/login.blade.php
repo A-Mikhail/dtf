@@ -11,13 +11,13 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
+<body class="d-flex align-items-center py-4 bg-body-tertiary justify-content-center">
     <form action="/login" method="POST">
         {{Form::token()}}
 
         <main class="form-signin w-100 m-auto">
             <form>
-                <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+                <h1 class="mb-4 fw-bold">DTF.kz</h1>
                 <h1 class="h3 mb-3 fw-normal">Пожалуйста, авторизуйтесь</h1>
 
                 <div class="form-floating">
