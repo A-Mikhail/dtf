@@ -1,15 +1,19 @@
-<!DOCTYPE html> <html> <head> <meta charset='utf-8'> <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<title>DTF.KZ</title>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!DOCTYPE html> 
+<html data-bs-theme="dark"> 
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>DTF.KZ</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-<link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
-<link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
-<link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
 </head>
 
-<body>
-    <form action="/login" method="POST"> 
-        {{Form::token()}} 
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <form action="/login" method="POST">
+        {{Form::token()}}
 
         <main class="form-signin w-100 m-auto">
             <form>
@@ -17,16 +21,19 @@
                 <h1 class="h3 mb-3 fw-normal">Пожалуйста, авторизуйтесь</h1>
 
                 <div class="form-floating">
-                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+                    <input type="email" class="form-control" name="email" id="floatingInput"
+                        placeholder="name@example.com">
                     <label for="floatingInput">Email адрес</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="floatingPassword"
+                        placeholder="Password">
                     <label for="floatingPassword">Пароль</label>
                 </div>
 
                 <div class="form-check text-start my-3">
-                    <input class="form-check-input" type="checkbox" value="remember" name='remember' id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="remember" name='remember'
+                        id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Запомнить меня
                     </label>
