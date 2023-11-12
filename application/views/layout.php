@@ -7,13 +7,14 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
 </head>
 <body>
     @yield('content')
 
     <script src='/libs/jquery/jquery-3.7.1.min.js'></script>
-    <script src='/libs/tailwind/tailwind.js'></script>
+    <script src='/libs/bootstrap/bootstrap.bundle.min.js'></script>
     <script src='/libs/jkanban/jkanban.min.js'></script>
     
     <script src='/main.js'></script>
