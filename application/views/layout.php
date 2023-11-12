@@ -10,8 +10,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
 </head>
 <body>
-    
-    
+    @yield('content')
 
     <script src='/libs/jquery/jquery-3.7.1.min.js'></script>
     <script src='/libs/tailwind/tailwind.js'></script>
