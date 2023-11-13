@@ -31,6 +31,10 @@
                     <label for="floatingPassword">Пароль</label>
                 </div>
 
+                @if(Session::has('error'))
+					<p class="text-danger message-error">Вы ввели неверную комбинацию логин/пароль!</p>
+				@endif
+                
                 <div class="form-check text-start my-3">
                     <input class="form-check-input" type="checkbox" value="remember" name='remember'
                         id="flexCheckDefault">

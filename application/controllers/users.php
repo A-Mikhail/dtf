@@ -17,11 +17,11 @@ class Users_Controller extends Base_Controller {
         );
 
         if (Auth::attempt($user)) {
-            if (Auth::user()->active != 'Y') {
-                return Response::error(403);
+            if (Auth::user()->active) {
+                return Redirect::to_route('chats');
             }
-
-            return Redirect::to_route('chats');
+            
+            return Response::error(403);
         } else {
             return Redirect::to_route('login')->with('error', 'Вы ввели неверную комбинацию логин/пароль!');
         }
