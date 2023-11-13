@@ -18,7 +18,7 @@ class Users_Controller extends Base_Controller {
 
         if (Auth::attempt($user)) {
             if (Auth::user()->active) {
-                return Redirect::to_route('chats');
+                return Redirect::to_route('kanban');
             }
             
             return Response::error(403);
