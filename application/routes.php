@@ -5,7 +5,7 @@ Route::post('login', array('uses'=>'users@login'));
 Route::get('logout', array('as'=>'logout', 'uses'=>'users@logout'));
 
 Route::group(array('before' => 'auth'), function () {
-	Route::get('/', array('as'=>'kanban','uses'=>'dtf@kanban'));
+	Route::get('/', array('as'=>'kanban','uses'=>'kanban@index'));
 });
 
 /*
