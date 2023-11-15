@@ -10,7 +10,7 @@ new jKanban({
         {
             'id': '_new',
             'title': 'Новые',
-            'class': 'success',
+            'class': 'bg-success text-white',
             'dragTo': ['_working'],
             'item': [
                 {
@@ -24,7 +24,7 @@ new jKanban({
         {
             'id': '_working_dtf',
             'title': 'В работе (DTF)',
-            'class': 'warning',
+            'class': 'bg-warning text-white',
             'item': [
                 {
                     'title': 'Do Something!',
@@ -37,7 +37,7 @@ new jKanban({
         {
             'id': '_working_UV',
             'title': 'В работе (UV)',
-            'class': 'warning',
+            'class': 'bg-warning text-white',
             'item': [
                 {
                     'title': 'Do Something!',
@@ -50,7 +50,7 @@ new jKanban({
         {
             'id': '_working_printing',
             'title': 'В работе (Нанесение)',
-            'class': 'warning',
+            'class': 'bg-warning text-white',
             'item': [
                 {
                     'title': 'Do Something!',
@@ -63,7 +63,7 @@ new jKanban({
         {
             'id': '_ship',
             'title': 'К отправке',
-            'class': 'success',
+            'class': 'bg-success text-white',
             'dragTo': ['_working'],
             'item': [
                 {
