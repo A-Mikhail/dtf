@@ -10,7 +10,7 @@ new jKanban({
         {
             'id': '_new',
             'title': 'Новые',
-            'class': 'bg-success,text-white',
+            'class': 'bg-primary,text-white',
             'dragTo': ['_working_dtf', '_working_UV', '_working_printing', '_ship'],
             'item': [
                 {
