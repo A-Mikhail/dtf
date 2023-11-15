@@ -1,6 +1,8 @@
 new jKanban({
     element: '#kanban',
-    gutter: '40px',
+    gutter: '15px',
+    widthBoard: '100%',
+    responsivePercentage: true,
     click: function (el) {
         alert(el.innerHTML);
     },
