@@ -10,8 +10,6 @@ class Webhooks_Controller extends Base_Controller {
         
         $response = json_decode($payload);
 
-        var_dump($response);
-        
         if (error_get_last() != JSON_ERROR_NONE) {
             if (property_exists($response, 'messages')) {
                 $messageArr = $response->messages[0];
@@ -22,7 +20,7 @@ class Webhooks_Controller extends Base_Controller {
                 $message->chat_type = $messageArr->chatType;
                 $message->chat_id = $messageArr->chatId;
                 $message->type = $messageArr->type;
-                $message->is_echo = $messageArr->isEcho;
+                $message->is_echo = $messageArr->isEcho ? 1 : 0;
                 $message->contact_name = $messageArr->contact->name;
 
                 if (property_exists($messageArr->contact, 'avatarUri')) {
