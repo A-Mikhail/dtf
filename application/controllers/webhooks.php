@@ -8,8 +8,10 @@ class Webhooks_Controller extends Base_Controller {
 		
 		file_put_contents(path('public').'all.txt', $payload);
         
-        $response = json_decode($payload, true);
+        $response = json_decode($payload);
 
+        var_dump($response);
+        
         if (error_get_last() != JSON_ERROR_NONE) {
             if (property_exists($response, 'messages')) {
                 $messageArr = $response->messages[0];
