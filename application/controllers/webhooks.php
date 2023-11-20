@@ -11,8 +11,8 @@ class Webhooks_Controller extends Base_Controller {
         $response = json_decode($payload, true);
 
         if (error_get_last() != JSON_ERROR_NONE) {
-            if (!empty($response['messages'])) {
-                $messageArr = $response['messages'];
+            if (property_exists($response, 'messages')) {
+                $messageArr = $response->messages[0];
 
                 $message = new Message();
                 $message->message_id = $messageArr->messageId;
