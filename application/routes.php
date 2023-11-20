@@ -6,6 +6,7 @@ Route::get('logout', array('as'=>'logout', 'uses'=>'users@logout'));
 
 // Webhooks
 Route::post('/webhook/messages', array('uses'=> 'webhooks@messages'));
+Route::post('/webhook/contacts', array('uses'=> 'webhooks@contacts'));
 
 Route::group(array('before' => 'auth'), function () {
 	Route::get('/', array('as'=>'kanban','uses'=>'kanban@index'));
