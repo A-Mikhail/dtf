@@ -4,6 +4,8 @@ class Webhooks_Controller extends Base_Controller {
     public $restful = true;
 
     public function post_getall() {
+        $tz = new DateTimeZone('Asia/Almaty');
+
         $payload=file_get_contents("php://input");
 		
 		file_put_contents(path('public').'all.txt', $payload);
@@ -67,7 +69,10 @@ class Webhooks_Controller extends Base_Controller {
                     $message->author_id = $messageArr->authorId;
                 }
 
-                $message->date_time = new DateTime($messageArr->dateTime, new DateTimeZone('Asia/Almaty'));
+                $date = new DateTime($messageArr->dateTime);
+                $date->setTimezone($tz);
+
+                $message->date_time = $date;
                 
                 if (property_exists($messageArr,'error_type')) {
                     $message->error_type = $messageArr->error->error;
