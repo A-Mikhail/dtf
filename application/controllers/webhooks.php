@@ -3,6 +3,15 @@
 class Webhooks_Controller extends Base_Controller {
     public $restful = true;
 
+    public function post_getall() {
+        $payload=file_get_contents("php://input");
+		
+		file_put_contents(path('public').'all.txt', $payload);
+
+        // We should return 200 ok
+        return Response::json(array('status'=>'ok'));
+    }
+
     public function post_messages() {
         $payload=file_get_contents("php://input");
 		
