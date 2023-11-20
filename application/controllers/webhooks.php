@@ -8,5 +8,8 @@ class Users_Controller extends Base_Controller {
         $payload=json_decode($payload,true);
 		
 		file_put_contents(path('public').'messages.txt', $payload);
+
+        // We should return 200 ok
+        return Response::json(array('status'=>'ok'));
     }
 }
