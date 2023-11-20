@@ -12,7 +12,7 @@ class Webhooks_Controller extends Base_Controller {
 
         if (error_get_last() != JSON_ERROR_NONE) {
             if (!empty($response['messages'])) {
-                $messageArr = $response['messages'][0];
+                $messageArr = $response['messages'];
 
                 $message = new Message();
                 $message->message_id = $messageArr->messageId;
