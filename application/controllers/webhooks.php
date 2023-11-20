@@ -67,7 +67,7 @@ class Webhooks_Controller extends Base_Controller {
                     $message->author_id = $messageArr->authorId;
                 }
 
-                $message->date_time = new DateTime($messageArr->dateTime);
+                $message->date_time = new DateTime($messageArr->dateTime, new DateTimeZone('Asia/Almaty'));
                 
                 if (property_exists($messageArr,'error_type')) {
                     $message->error_type = $messageArr->error->error;
