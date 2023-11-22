@@ -44,7 +44,7 @@ class Webhooks_Controller extends Base_Controller {
                 }
 
                 if (property_exists($messageArr, 'quotedMessage')) {
-                    $message->quoted_message = $messageArr->quotedMessage;
+                    $message->quoted_message = serialize($messageArr->quotedMessage);
                 } else {
                     $message->quoted_message = null;
                 }
