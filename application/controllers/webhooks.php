@@ -37,7 +37,11 @@ class Webhooks_Controller extends Base_Controller {
                     $message->content_uri = null;
                 }
 
-                $message->text = $messageArr->text;
+                if (property_exists($messageArr, 'text')) {
+                    $message->text = $messageArr->text;
+                } else {
+                    $message->text = null;
+                }
 
                 if (property_exists($messageArr, 'quotedMessage')) {
                     $message->quoted_message = $messageArr->quotedMessage;
