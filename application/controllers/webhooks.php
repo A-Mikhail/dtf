@@ -95,7 +95,7 @@ class Webhooks_Controller extends Base_Controller {
     }
 
     private function create_client ($data) {
-        $client = Client::where('chat_id', '=', $data->contactData[1])->get();
+        $client = Client::where('chat_id', '=', $data->chatId)->get();
         
         if (!empty($client)) {
             $client = new Client();
