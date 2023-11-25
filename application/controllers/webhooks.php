@@ -85,10 +85,30 @@ class Webhooks_Controller extends Base_Controller {
                 }
 
                 $message->save();
+
+                self::create_client();
             }
         }
 
         // We should return 200 ok
         return Response::json(array('status'=>'ok'));
+    }
+
+    private function create_client ($data) {
+        $client = Client::where('chat_id', '=', $data->contactData[1])->get();
+        
+        if (!empty($client)) {
+            $client = new Client();
+    
+            // By default 1, we don't have another users in Wazzup
+            $client->user_id = 1;
+            $client->name = $data->contact->name;
+            $client->chat_type = $data->chatType;
+            $client->chat_id = $data->chatId;
+            // Source is hardcoded, because I don't use Wazzup create deal functional
+            $client->source = 'self';
+    
+            $client->save();
+        }
     }
 }
