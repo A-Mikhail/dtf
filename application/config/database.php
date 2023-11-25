@@ -66,7 +66,7 @@ return array(
 			'database' => 'dtf',
 			'username' => 'mikhail',
 			'password' => 'F](IYcG0=C&',
-			'charset'  => 'utf8',
+			'charset'  => 'utf8mb4',
 			'prefix'   => '',
 		),
 
