@@ -31,7 +31,7 @@
                 'item': [
                     @foreach($clients as $c)
                     {
-                        'title': '{{$c->chat_id}}'
+                        'title': '{{$c->name}} <br> {{$c->chat_id}}'
                     },
                     @endforeach
                 ]
