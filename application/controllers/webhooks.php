@@ -86,7 +86,7 @@ class Webhooks_Controller extends Base_Controller {
 
                 $message->save();
 
-                self::create_client();
+                self::create_client($messageArr);
             }
         }
 
