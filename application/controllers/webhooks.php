@@ -107,6 +107,7 @@ class Webhooks_Controller extends Base_Controller {
             $client->chat_id = $data->chatId;
             // Source is hardcoded, because I don't use Wazzup create deal functional
             $client->source = 'self';
+            $client->current_status = 'new';
     
             $client->save();
         }
