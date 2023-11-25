@@ -26,12 +26,12 @@
             @foreach($statuses as $s)
             {
                 'id': '{{$s->current_status}}',
-                'title': '{{__("statuses.{{$s->current_status}}")}}',
+                'title': '{{__("statuses.$s->current_status")}}',
                 'class': 'bg-primary,text-white',
                 'item': [
                     @foreach($clients as $c)
                     {
-                        'title': '$c->name'
+                        'title': '{{$c->name}}'
                     },
                     @endforeach
                 ]
