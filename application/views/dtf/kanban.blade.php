@@ -39,11 +39,14 @@
                 'item': [
                     @foreach($clients as $c)
                     {
-                        'title': `<p class="fw-bold m-0">{{$c->chat_id}}</p> <p class="m-0">{{$c->name}}</p>            <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>`,
+                        'title': `<p class="fw-bold m-0">{{$c->chat_id}}</p>
+                            <p class="m-0">{{$c->name}}</p>            
+                            
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-success" href="#">Завершить</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#">Забраковать</a></li>
+                            </ul>`,
                         'class': ['dropdown'],
                         'bs-toggle': 'dropdown'
                     },
