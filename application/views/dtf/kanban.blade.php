@@ -63,7 +63,7 @@
     });
 
     $('.btn-status-success').on('click', function () {
-        const chatId = $(this).data('chatId');
+        const chatId = $(this).parent().parent().parent().data('chatId');
 
         $.ajax({
             url: '/changestatus',
@@ -76,7 +76,7 @@
             success: function (data) {
                 if (data.status == 'ok') {
                     // Remove from kanban
-                    $(this).parent().remove();
+                    $(this).parent().parent().parent().remove();
 
                     $('.toast-body').text('Статус изменён на завершено');
 
