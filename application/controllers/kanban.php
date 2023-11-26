@@ -17,7 +17,7 @@ class Kanban_Controller extends Base_Controller {
     public function post_changestatus() {
         // Write to the log
         $chatId = Input::get('chatId');
-        $client = Client::where('chat_id', '=', $chatId)->get();
+        $client = Client::where('chat_id', '=', $chatId)->first();
         
         if (!empty($client)) {
             $client->current_status = Input::get('status');
