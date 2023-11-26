@@ -63,7 +63,7 @@
     });
 
     $('.btn-status-success').on('click', function () {
-        const chatId = $(this).parent().parent().parent().data('chatId');
+        const chatId = $(this).parent().parent().parent().data('chatid');
 
         $.ajax({
             url: '/changestatus',
