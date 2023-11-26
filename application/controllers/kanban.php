@@ -13,4 +13,33 @@ class Kanban_Controller extends Base_Controller {
             ->with('clients', $clients)
             ->with('statuses', $statuses);
     }
+
+    public function post_changestatus() {
+        // Write to the log
+        $chatId = Input::get('chatId');
+
+        $client = Client::where('chat_id', '=', $chatId)->get();
+        $log = new Log();
+        
+        if (!empty($client)) {
+            $client->current_status = Input::get('status');
+            $client->save();
+
+            $log->author = Auth::user()->id;
+            $log->type = 'status';
+            $log->comment = 'Статус изменён на ' . $client->current_status;
+            $log->chat_id = $chatId;
+            $log->save();
+
+            return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
+        } else {
+            $log->author = Auth::user()->id;
+            $log->type = 'status';
+            $log->comment = 'Ошибка смена статуса на '. $client->current_status . '. Причина: Клиент не найден';
+            $log->chat_id = $chatId;
+            $log->save();
+
+            return Response::json('Client is empty', 400);
+        }
+    }
 }
