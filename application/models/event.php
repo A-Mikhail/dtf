@@ -1,5 +1,5 @@
 <?php
 
-class Log extends Eloquent {
+class Event extends Eloquent {
 	public static $table = 'logs';
 }

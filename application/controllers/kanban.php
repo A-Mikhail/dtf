@@ -19,7 +19,7 @@ class Kanban_Controller extends Base_Controller {
         $chatId = Input::get('chatId');
 
         $client = Client::where('chat_id', '=', $chatId)->get();
-        $log = new Log();
+        $log = new Event();
         
         if (!empty($client)) {
             $client->current_status = Input::get('status');
