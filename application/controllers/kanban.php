@@ -19,24 +19,23 @@ class Kanban_Controller extends Base_Controller {
         $chatId = Input::get('chatId');
 
         $client = Client::where('chat_id', '=', $chatId)->get();
+        
         $event = new Event();
-    
+        $event->author = Auth::user()->id;
+        $event->type = 'status';
+        $event->chat_id = $chatId;
+
         if (!empty($client)) {
             $client->current_status = Input::get('status');
             $client->save();
 
-            $event->author = Auth::user()->id;
-            $event->type = 'status';
             $event->comment = 'Статус изменён на ' . Input::get('status');
-            $event->chat_id = $chatId;
             $event->save();
 
             return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
         } else {
-            $event->author = Auth::user()->id;
-            $event->type = 'status';
+
             $event->comment = 'Ошибка смена статуса на '. Input::get('status') . '. Причина: Клиент не найден';
-            $event->chat_id = $chatId;
             $event->save();
 
             return Response::json('Client is empty', 400);
