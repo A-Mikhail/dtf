@@ -17,26 +17,16 @@ class Kanban_Controller extends Base_Controller {
     public function post_changestatus() {
         // Write to the log
         $chatId = Input::get('chatId');
-
         $client = Client::where('chat_id', '=', $chatId)->get();
         
-        $event = new Event();
-        $event->author = Auth::user()->id;
-        $event->type = 'status';
-        $event->chat_id = $chatId;
-
         if (!empty($client)) {
             $client->current_status = Input::get('status');
-            $client->save();
-
-            $event->comment = 'Статус изменён на ' . Input::get('status');
-            $event->save();
+            $client->log('status', 'Статус изменён на ' . $client->rustatus(Input::get('status')));
+            $client->save();         
 
             return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
         } else {
-
-            $event->comment = 'Ошибка смена статуса на '. Input::get('status') . '. Причина: Клиент не найден';
-            $event->save();
+            $client->log('status', 'Ошибка смена статуса на '. $client->rustatus(Input::get('status')) . '. Причина: Клиент не найден');
 
             return Response::json('Client is empty', 400);
         }
