@@ -21,12 +21,12 @@ class Kanban_Controller extends Base_Controller {
         
         if (!empty($client)) {
             $client->current_status = Input::get('status');
-            $client->log('status', 'Статус изменён на ' . $client->rustatus(Input::get('status')));
+            $client->log('status', 'Статус изменён на ' . $client->rustatus());
             $client->save();         
 
             return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
         } else {
-            $client->log('status', 'Ошибка смена статуса на '. $client->rustatus(Input::get('status')) . '. Причина: Клиент не найден');
+            $client->log('status', 'Ошибка смена статуса на '. $client->rustatus() . '. Причина: Клиент не найден');
 
             return Response::json('Client is empty', 400);
         }
