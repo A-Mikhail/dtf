@@ -27,7 +27,7 @@ class Kanban_Controller extends Base_Controller {
 
             $log->author = Auth::user()->id;
             $log->type = 'status';
-            $log->comment = 'Статус изменён на ' . $client->current_status;
+            $log->comment = 'Статус изменён на ' . Input::get('status');
             $log->chat_id = $chatId;
             $log->save();
 
@@ -35,7 +35,7 @@ class Kanban_Controller extends Base_Controller {
         } else {
             $log->author = Auth::user()->id;
             $log->type = 'status';
-            $log->comment = 'Ошибка смена статуса на '. $client->current_status . '. Причина: Клиент не найден';
+            $log->comment = 'Ошибка смена статуса на '. Input::get('status') . '. Причина: Клиент не найден';
             $log->chat_id = $chatId;
             $log->save();
 

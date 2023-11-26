@@ -70,7 +70,7 @@
             method: 'POST',
             dataType: 'json',
             data: {
-                chatId,
+                chatId: chatId,
                 status: 'success'
             },
             success: function (data) {
