@@ -19,12 +19,12 @@ class Kanban_Controller extends Base_Controller {
         $chatId = Input::get('chatId');
 
         $client = Client::where('chat_id', '=', $chatId)->get();
-        $log = new Event();
-        
+    
         if (!empty($client)) {
             $client->current_status = Input::get('status');
             $client->save();
 
+            $log = new Event();
             $log->author = Auth::user()->id;
             $log->type = 'status';
             $log->comment = 'Статус изменён на ' . Input::get('status');
@@ -33,6 +33,7 @@ class Kanban_Controller extends Base_Controller {
 
             return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
         } else {
+            $log = new Event();
             $log->author = Auth::user()->id;
             $log->type = 'status';
             $log->comment = 'Ошибка смена статуса на '. Input::get('status') . '. Причина: Клиент не найден';
