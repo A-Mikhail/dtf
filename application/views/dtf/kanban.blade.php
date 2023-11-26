@@ -52,7 +52,7 @@
                                 <li><a class="dropdown-item text-danger btn-status-danger" href="#">Забраковать</a></li>
                             </ul>`,
                         'class': ['dropdown'],
-                        'chatId': '{{$c->chat_id}}'
+                        'chatId': '{{$c->chat_id}}',
                         'bs-toggle': 'dropdown'
                     },
                     @endforeach
