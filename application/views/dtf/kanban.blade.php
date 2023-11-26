@@ -81,14 +81,14 @@
                     $('.toast-body').text('Статус изменён на завершено');
 
                     const toastElList = document.querySelectorAll('.toast');
-                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option));
+                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
                 }
             },
             error: function () {
                 $('.toast-body').text('Ошибка изменения статуса');
 
                 const toastElList = document.querySelectorAll('.toast');
-                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option));
+                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
             }
         });
     });

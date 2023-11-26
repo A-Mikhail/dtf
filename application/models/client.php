@@ -11,6 +11,7 @@ class Client extends Eloquent {
 			'type' => $type,
 			'comment'=> $comment,
 			'chat_id' => $this->chat_id,
+			'created_at' => new DateTime()
 		);
 
 		DB::table('events')->insert($ins);
