@@ -45,7 +45,7 @@
                     @foreach($clients as $c)
                     {
                         'title': '<p class="fw-bold m-0">{{$c->chat_id}}</p> <p class="m-0">{{$c->name}}</p>',
-                        'class': ['dropdown'],
+                        'class': ['dropdown', 'dropdown-toggle'],
                         'bs-toggle': 'dropdown'
                     },
                     @endforeach
