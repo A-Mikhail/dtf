@@ -7,6 +7,12 @@
         <div class="col-12">
             <div id="kanban">
             </div>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -20,9 +26,16 @@
         widthBoard: '100%',
         responsivePercentage: true,
         click: function (el) {
-            alert(el.innerHTML);
+            const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+            const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
         },
+        // Right click
+        context: function (el, event) {
+            console.log(el, event);
 
+            const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+            const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
+        },
         boards: [
             @foreach($statuses as $s)
             {
@@ -40,14 +53,7 @@
                 ]
             },
             @endforeach
-        ],
-        // Right click
-        context: function (el, event) {
-            console.log(el, event);
-
-            const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
-            const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
-        }
+        ]
     });    
 </script>
 @endsection
