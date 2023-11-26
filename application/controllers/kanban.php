@@ -26,8 +26,6 @@ class Kanban_Controller extends Base_Controller {
 
             return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
         } else {
-            $client->log('status', 'Ошибка смена статуса на '. $client->rustatus() . '. Причина: Клиент не найден');
-
             return Response::json('Client is empty', 400);
         }
     }
