@@ -7,8 +7,8 @@
     }
 
     .kanban-board .kanban-drag {
-        max-height: 80vh;
-        overflow-y: auto;
+        max-height: 80vh !important;
+        overflow-y: auto !important;
     }
 </style>
 @endsection
