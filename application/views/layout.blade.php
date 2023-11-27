@@ -10,6 +10,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
+
+    @yield('csstop')
 </head>
 
 <body>
