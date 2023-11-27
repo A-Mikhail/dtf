@@ -1,5 +1,12 @@
 @layout('layout')
 
+@section('ccstop')
+<style>
+    .kanban-board {
+        background: #EEEEEE !important;
+    }
+</style>
+@endsection
 
 @section('content')
 <div class="container-fluid">

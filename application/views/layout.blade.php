@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header class="p-3 text-bg-dark">
+    <header class="p-3 bg-body-tertiary border-bottom">
         <div class="container">
             <div class="d-flex flex-wrap">
                 <ul class="nav col-6 mb-2 mb-md-0">
