@@ -1,9 +1,14 @@
 @layout('layout')
 
-@section('ccstop')
+@section('csstop')
 <style>
     .kanban-board {
         background: #EEEEEE !important;
+    }
+
+    .kanban-board .kanban-drag {
+        max-height: 80vh;
+        overflow-y: auto;
     }
 </style>
 @endsection
