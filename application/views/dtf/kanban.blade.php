@@ -30,16 +30,17 @@
         gutter: '15px',
         widthBoard: '100%',
         responsivePercentage: true,
+        dragBoards: false, 
         click: function (el) {
             const dropdownElementList = document.querySelectorAll('.dropdown');
             const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
         },
         boards: [
-            @foreach($statuses as $s)
+            @foreach($statuses as $status => $color)
             {
-                'id': '{{$s}}',
-                'title': '{{__("statuses.$s")}}',
-                'class': 'bg-primary,text-white',
+                'id': '{{$status}}',
+                'title': '{{__("statuses.$status")}}',
+                'class': 'bg-{{$color}}, text-white',
                 'item': [
                     @foreach($clients as $c)
                     {

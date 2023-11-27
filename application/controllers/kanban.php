@@ -5,7 +5,14 @@ class Kanban_Controller extends Base_Controller {
 
     public function get_index() {
         $exclude_statuses = array('reject', 'success');
-        $statuses = array('new', 'dtf', 'uv', 'applying', 'payment', 'shipment');
+        
+        $statuses = array(
+            'new' => 'primary', 
+            'dtf' => 'primary-subtle', 
+            'uv' => 'primary-subtle', 
+            'applying' => 'primary-subtle', 
+            'payment' => 'success-subtle', 
+            'shipment' => 'success');
 
         $clients = Client::where_not_in('current_status', $exclude_statuses)->get(array('name', 'chat_id', 'current_status', 'updated_at'));
 
