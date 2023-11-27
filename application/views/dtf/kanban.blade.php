@@ -57,6 +57,7 @@
                                 'chatId': '{{$c->chat_id}}',
                                 'bs-toggle': 'dropdown'
                             },
+                        @endif
                         }
                     @endforeach
                 ]
