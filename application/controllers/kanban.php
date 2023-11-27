@@ -8,10 +8,10 @@ class Kanban_Controller extends Base_Controller {
         
         $statuses = array(
             'new' => 'primary', 
-            'dtf' => 'primary-subtle', 
-            'uv' => 'primary-subtle', 
-            'applying' => 'primary-subtle', 
-            'payment' => 'success-subtle', 
+            'dtf' => 'info', 
+            'uv' => 'info', 
+            'applying' => 'info', 
+            'payment' => 'warning', 
             'shipment' => 'success');
 
         $clients = Client::where_not_in('current_status', $exclude_statuses)->get(array('name', 'chat_id', 'current_status', 'updated_at'));
