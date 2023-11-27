@@ -43,7 +43,7 @@
                 'class': 'bg-{{$color}}, text-white',
                 'item': [
                     @foreach($clients as $c)
-                        @if ($c->current_status == $status) {
+                        @if ($c->current_status == $status) 
                             {
                                 'title': `<p class="fw-bold m-0">{{$c->chat_id}}</p>
                                     <p class="m-0">{{$c->name}}</p>            
@@ -58,7 +58,6 @@
                                 'bs-toggle': 'dropdown'
                             },
                         @endif
-                        }
                     @endforeach
                 ]
             },
