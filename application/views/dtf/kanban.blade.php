@@ -57,8 +57,7 @@
                     },
                     @endforeach
                 ]
-            },
-            @endforeach
+            }
         ]
     });
 
@@ -78,7 +77,7 @@
                     // Remove from kanban
                     $(this).parent().parent().parent().remove();
 
-                    $('.toast-body').text('Статус изменён на завершено');
+                    $('.toast-body').text('Контакт переведён в статус завершён');
 
                     const toastElList = document.querySelectorAll('.toast');
                     const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
