@@ -37,8 +37,8 @@
         boards: [
             @foreach($statuses as $s)
             {
-                'id': '{{$s->current_status}}',
-                'title': '{{__("statuses.$s->current_status")}}',
+                'id': '{{$s}}',
+                'title': '{{__("statuses.$s")}}',
                 'class': 'bg-primary,text-white',
                 'item': [
                     @foreach($clients as $c)
