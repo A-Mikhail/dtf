@@ -43,19 +43,21 @@
                 'class': 'bg-{{$color}}, text-white',
                 'item': [
                     @foreach($clients as $c)
-                    {
-                        'title': `<p class="fw-bold m-0">{{$c->chat_id}}</p>
-                            <p class="m-0">{{$c->name}}</p>            
-                            
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger btn-status-danger" href="#">Забраковать</a></li>
-                            </ul>`,
-                        'class': ['dropdown'],
-                        'chatId': '{{$c->chat_id}}',
-                        'bs-toggle': 'dropdown'
-                    },
+                        @if ($c->current_status == $status) {
+                            {
+                                'title': `<p class="fw-bold m-0">{{$c->chat_id}}</p>
+                                    <p class="m-0">{{$c->name}}</p>            
+                                    
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger btn-status-danger" href="#">Забраковать</a></li>
+                                    </ul>`,
+                                'class': ['dropdown'],
+                                'chatId': '{{$c->chat_id}}',
+                                'bs-toggle': 'dropdown'
+                            },
+                        }
                     @endforeach
                 ]
             },
