@@ -58,14 +58,6 @@
                     chatId: $(el).data('chatid'),
                     status: $(source).data('id')
                 },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        $('.toast-body').text(`Контакт переведён в статус {{__("statuses.${$(source).data('id')}")}}`);
-
-                        const toastElList = document.querySelectorAll('.toast');
-                        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                    }
-                },
                 error: function () {
                     $('.toast-body').text('Ошибка изменения статуса');
 
