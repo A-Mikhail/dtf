@@ -6,16 +6,16 @@
         max-height: 80vh !important;
         overflow-y: auto !important;
         padding: 10px !important;
-    };
+    }
 
-    .kanban-board > header {
+    .kanban-board header {
         padding: 10px !important;
         font-size: 12pt !important;
-    };
+    }
 
     .item-title {
         word-wrap: break-word;
-    };
+    }
 </style>
 @endsection
 
