@@ -23,9 +23,16 @@ class Client extends Eloquent {
 		$status = $this->current_status;
 
 		$status_arr = array(
-			'new' => 'Новый',
-			'success' => 'Завершен',
-			'reject' => 'Забракован'
+			'new'           => 'Новый',
+			'dtf'           => 'DTF',
+			'uv'            => 'UV',
+			'applying'      => 'Нанесение',
+			'payment'       => 'Оплата',
+			'shipment'      => 'Отправка',
+			'printer'       => 'Принтеры',
+			'consumables'   => 'Расходники',
+			'success'       => 'Завершён',
+			'reject'        => 'Забракован'
 		);
 
 		if (array_key_exists($status, $status_arr)) {

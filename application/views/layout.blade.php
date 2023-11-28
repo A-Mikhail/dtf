@@ -19,7 +19,8 @@
         <div class="container">
             <div class="d-flex flex-wrap">
                 <ul class="nav col-6 mb-2 mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-secondary active">Главная</a></li>
+                    <li><a href="/" class="nav-link px-2 text-secondary active">Kanban</a></li>
+                    <li><a href="/client/table" class="nav-link px-2 text-secondary active">Таблица</a></li>
                 </ul>
 
                 <div class="col-6 text-end">

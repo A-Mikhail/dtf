@@ -13,6 +13,8 @@ Route::post('/webhook/all', array('uses'=> 'webhooks@getall'));
 
 Route::group(array('before' => 'auth'), function () {
 	Route::get('/', array('as'=>'kanban','uses'=>'kanban@index'));
+	Route::get('/client/table', array('uses'=>'table@index'));
+	
 	Route::post('/changestatus', array('uses' => 'kanban@changestatus'));
 });
 

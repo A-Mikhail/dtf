@@ -6,7 +6,11 @@
         max-height: 80vh !important;
         overflow-y: auto !important;
         padding: 10px !important;
-    }
+    };
+
+    .item-title {
+        word-wrap: break-word;
+    };
 </style>
 @endsection
 
@@ -45,8 +49,6 @@
             const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
         },
         dropEl: function (el, target, source, sibling) {
-            console.log(el, target, source, sibling);
-
             $.ajax({
                 url: '/changestatus',
                 method: 'POST',
@@ -73,7 +75,7 @@
                     @foreach($clients as $c)
                         @if ($c->current_status == $status) 
                             {
-                                'title': `<p class="fw-bold m-0">{{$c->chat_id}}</p>
+                                'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
                                     <p class="m-0">{{$c->name}}</p>            
                                     
                                     <ul class="dropdown-menu">
