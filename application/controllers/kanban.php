@@ -11,6 +11,8 @@ class Kanban_Controller extends Base_Controller {
             'dtf' => 'dark', 
             'uv' => 'dark', 
             'applying' => 'dark', 
+            'printer' => 'dark',
+            'consumables' => 'dark',
             'payment' => 'warning', 
             'shipment' => 'success');
 
