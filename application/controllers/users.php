@@ -31,7 +31,7 @@ class Users_Controller extends Base_Controller {
         if (Auth::check()) {
             Auth::logout();
 
-            return Response::json((object) array('status' => '200', 'response' => 'logout'));
+            return Redirect::to_route('login');
         }
     }
 }
