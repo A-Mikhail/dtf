@@ -2,13 +2,10 @@
 
 @section('csstop')
 <style>
-    .kanban-board {
-        background: #EEEEEE !important;
-    }
-
     .kanban-board .kanban-drag {
         max-height: 80vh !important;
         overflow-y: auto !important;
+        padding: 10px !important;
     }
 </style>
 @endsection
@@ -39,7 +36,7 @@
 <script>
     new jKanban({
         element: '#kanban',
-        gutter: '15px',
+        gutter: '10px',
         widthBoard: '100%',
         responsivePercentage: true,
         dragBoards: false, 
