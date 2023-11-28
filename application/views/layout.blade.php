@@ -53,7 +53,7 @@
                 </li>
             </ul>
 
-            <ul class="nav">
+            <ul class="nav align-items-center">
                 <div class="dropdown text-end">
                     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                         data-bs-toggle="dropdown" aria-expanded="false">
