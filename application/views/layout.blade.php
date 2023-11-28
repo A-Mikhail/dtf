@@ -18,6 +18,39 @@
     <header class="p-3 bg-body-tertiary border-bottom">
         <div class="container">
             <div class="d-flex flex-wrap">
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li>
+                      <a href="#" class="nav-link text-secondary">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
+                        Home
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="nav-link text-white">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="nav-link text-white">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
+                        Orders
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="nav-link text-white">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
+                        Products
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="nav-link text-white">
+                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
+                        Customers
+                      </a>
+                    </li>
+                  </ul>
+                  
                 <ul class="nav col-6 mb-2 mb-md-0">
                     <li><a href="/" class="nav-link px-2 text-secondary active">Kanban</a></li>
                     <li><a href="/client/table" class="nav-link px-2 text-secondary active">Таблица</a></li>
