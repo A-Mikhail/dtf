@@ -8,7 +8,7 @@
         padding: 10px !important;
     };
 
-    .kanban-board header {
+    .kanban-board > header {
         padding: 10px !important;
         font-size: 12pt !important;
     };
