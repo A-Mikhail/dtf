@@ -18,7 +18,7 @@
     <header class="p-3 bg-body-tertiary border-bottom">
         <div class="container">
             <div class="d-flex flex-wrap">
-                <ul class="nav col-12 col-lg-auto">
+                <ul class="nav col-6">
                     <li>
                         <a href="/" class="nav-link text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -54,14 +54,20 @@
                     </li>
                 </ul>
 
-                <!-- <ul class="nav col-6 mb-2 mb-md-0">
-                    <li><a href="/" class="nav-link px-2 text-secondary active">Kanban</a></li>
-                    <li><a href="/client/table" class="nav-link px-2 text-secondary active">Таблица</a></li>
-                    <li><a href="/wazzup/all" class="nav-link px-2 text-secondary active">Все чаты</a></li>
-                </ul> -->
-
                 <div class="col-6 text-end">
-                    <a href="/logout" type="button" class="btn btn-danger">Выход</a>
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{Auth::user()->username}}
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="/settings">Настройки</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/logout">Выход</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
