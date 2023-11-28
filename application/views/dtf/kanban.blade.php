@@ -56,7 +56,7 @@
                 dataType: 'json',
                 data: {
                     chatId: $(el).data('chatid'),
-                    status: $(source).data('id')
+                    status: $(target).parent().data('id')
                 },
                 error: function () {
                     $('.toast-body').text('Ошибка изменения статуса');
