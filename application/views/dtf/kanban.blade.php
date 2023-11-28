@@ -2,6 +2,11 @@
 
 @section('csstop')
 <style>
+    .kanban-board header {
+        padding: 10px !important;
+        font-size: 12pt !important;
+    };
+
     .kanban-board .kanban-drag {
         max-height: 80vh !important;
         overflow-y: auto !important;
