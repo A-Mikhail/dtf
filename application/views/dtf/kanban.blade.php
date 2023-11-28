@@ -5,6 +5,7 @@
     .kanban-board .kanban-drag {
         max-height: 80vh !important;
         overflow-y: auto !important;
+        overflow-x: hidden;
         padding: 10px !important;
     }
 
@@ -13,7 +14,7 @@
         font-size: 12pt !important;
     }
 
-    .item-title {
+    .item-title, .item-subtitle {
         word-wrap: break-word;
     }
 </style>
@@ -81,7 +82,7 @@
                         @if ($c->current_status == $status) 
                             {
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
-                                    <p class="m-0">{{$c->name}}</p>            
+                                    <p class="m-0 item-subtitle">{{$c->name}}</p>            
                                     
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
