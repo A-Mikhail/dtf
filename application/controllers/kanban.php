@@ -50,11 +50,11 @@ class Kanban_Controller extends Base_Controller {
                     "name" => Auth::user()->username
                 ),
                 "scope" => "card",
-                "filter" => (object)array(
+                "filter" => array(array(
                     "chatType" => "whatsapp",
                     "chatId" => $chatId,
                     "name" => $client->name
-                ),
+                )),
                 "options" => array(
                     "useDealsEvents" => true
                 )
