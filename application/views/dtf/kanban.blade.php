@@ -40,6 +40,30 @@
     <div class="toast-body">
     </div>
 </div>
+
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="contactModalTitle">Выберите действие</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <button type="button" class="btn btn-info btn-contact-message">Перейти к чату</button>
+                
+                <hr class="dropdown-divider">
+                
+                <button type="button" class="btn btn-success btn-status-success">Завершить</button>
+                <button type="button" class="btn btn-danger btn-status-danger">Забраковать</button>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')
@@ -51,8 +75,7 @@
         responsivePercentage: true,
         dragBoards: false, 
         click: function (el) {
-            const dropdownElementList = document.querySelectorAll('.dropdown');
-            const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
+            const contactModal = new bootstrap.Modal('#contactModal');
         },
         dropEl: function (el, target, source, sibling) {
             $.ajax({
@@ -82,14 +105,7 @@
                         @if ($c->current_status == $status) 
                             {
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
-                                    <p class="m-0 item-subtitle">{{$c->name}}</p>            
-                                    
-                                    <ul class="dropdown-menu" data-chatid="{{$c->chat_id}}">
-                                        <li><a class="dropdown-item text-info btn-contact-message" href="#">Перейти к чату</a></li>    
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
-                                        <li><a class="dropdown-item text-danger btn-status-danger" href="#">Забраковать</a></li>
-                                    </ul>`,
+                                    <p class="m-0 item-subtitle">{{$c->name}}</p>`,
                                 'class': ['dropdown'],
                                 'chatId': '{{$c->chat_id}}',
                                 'bs-toggle': 'dropdown'
