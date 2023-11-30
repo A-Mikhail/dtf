@@ -132,8 +132,6 @@
 
     const statusSuccess = (chatId) => {
         $('.btn-status-success').off('click').on('click', function () {
-            const chatId = $(this).data('chatid');
-    
             $.ajax({
                 url: '/changestatus',
                 method: 'POST',
@@ -165,8 +163,6 @@
 
     const statusReject = (chatId) => {
         $('.btn-status-reject').off('click').on('click', function () {
-            const chatId = $(this).data('chatid');
-    
             $.ajax({
                 url: '/changestatus',
                 method: 'POST',
@@ -198,10 +194,6 @@
 
     const contactMessage = (chatId) => {
         $('.btn-contact-message').off('click').on('click', function () {
-            const chatId = $(this).data('chatid');
-    
-            console.log(chatId);
-    
             $.ajax({
                 url: '/chatiframe',
                 method: 'GET',
