@@ -75,7 +75,6 @@
         responsivePercentage: true,
         dragBoards: false, 
         click: function (el) {
-            const contactModal = new bootstrap.Modal('#contactModal');
         },
         dropEl: function (el, target, source, sibling) {
             $.ajax({
@@ -106,9 +105,9 @@
                             {
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>`,
-                                'class': ['dropdown'],
                                 'chatId': '{{$c->chat_id}}',
-                                'bs-toggle': 'dropdown'
+                                'bs-toggle': 'modal',
+                                'bs-target': '#contactModal'
                             },
                         @endif
                     @endforeach
