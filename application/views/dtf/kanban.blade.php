@@ -85,8 +85,9 @@
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>            
                                     
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
+                                        <li><a class="dropdown-item text-info btn-contact-message" href="#">Перейти к чату</a></li>    
                                         <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
                                         <li><a class="dropdown-item text-danger btn-status-danger" href="#">Забраковать</a></li>
                                     </ul>`,
                                 'class': ['dropdown'],
@@ -125,6 +126,30 @@
             },
             error: function () {
                 $('.toast-body').text('Ошибка изменения статуса');
+
+                const toastElList = document.querySelectorAll('.toast');
+                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+            }
+        });
+    });
+
+    $('.btn-contact-message').on('click', function () {
+        const chatId = $(this).parent().parent().parent().data('chatid');
+
+        $.ajax({
+            url: '/chatiframe',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                chatId: chatId
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    window.open(data.iframeurl, '_blank');
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Произошла ошибка во время открытия чата');
 
                 const toastElList = document.querySelectorAll('.toast');
                 const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));

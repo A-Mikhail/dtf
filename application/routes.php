@@ -16,6 +16,7 @@ Route::group(array('before' => 'auth'), function () {
 	Route::get('/client/table', array('uses'=>'table@index'));
 	
 	Route::post('/changestatus', array('uses' => 'kanban@changestatus'));
+	Route::get('/chatiframe', array('uses' => 'kanban@chatiframe'));
 });
 
 /*
