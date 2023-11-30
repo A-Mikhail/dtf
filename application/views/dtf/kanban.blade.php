@@ -84,7 +84,7 @@
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>            
                                     
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" data-chatid="{{$c->chat_id}}">
                                         <li><a class="dropdown-item text-info btn-contact-message" href="#">Перейти к чату</a></li>    
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item text-success btn-status-success" href="#">Завершить</a></li>
@@ -103,7 +103,7 @@
     });
 
     $('.btn-status-success').on('click', function () {
-        const chatId = $(this).parent().parent().parent().data('chatid');
+        const chatId = $(this).data('chatid');
 
         $.ajax({
             url: '/changestatus',
@@ -134,10 +134,10 @@
     });
 
     $('.btn-contact-message').on('click', function () {
-        const chatId = $(this).parent().parent().data('chatid');
+        const chatId = $(this).data('chatid');
 
         console.log(chatId);
-        
+
         $.ajax({
             url: '/chatiframe',
             method: 'GET',
