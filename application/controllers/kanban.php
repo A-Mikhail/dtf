@@ -50,7 +50,7 @@ class Kanban_Controller extends Base_Controller {
                     "name" => Auth::user()->username
                 ),
                 "scope" => "card",
-                "filter" => array(
+                "filter" => (object)array(
                     "chatType" => "whatsapp",
                     "chatId" => $chatId,
                     "name" => $client->name
@@ -65,7 +65,7 @@ class Kanban_Controller extends Base_Controller {
 
         $iframe_link = Wazzup::send('iframe', json_encode($body), 'POST');
         var_dump($iframe_link);
-        
+
         if (property_exists($iframe_link, 'url')) {
             return Response::json(array('status'=>'ok', 'message'=>'link generated', 'code'=>'0200', 'iframeurl' => $iframe_link->url));
         } else {
