@@ -134,8 +134,10 @@
     });
 
     $('.btn-contact-message').on('click', function () {
-        const chatId = $(this).parent().parent().parent().data('chatid');
+        const chatId = $(this).parent().parent().data('chatid');
 
+        console.log(chatId);
+        
         $.ajax({
             url: '/chatiframe',
             method: 'GET',
