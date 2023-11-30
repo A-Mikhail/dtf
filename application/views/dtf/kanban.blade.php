@@ -49,13 +49,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
-                <button type="button" class="btn btn-info btn-contact-message">Перейти к чату</button>
-                
-                <hr class="dropdown-divider">
-                
-                <button type="button" class="btn btn-success btn-status-success">Завершить</button>
-                <button type="button" class="btn btn-danger btn-status-danger">Забраковать</button>
+            <div class="modal-body d-flex flex-column align-items-center" style="gap: 1em;">
+                <button type="button" class="btn btn-primary btn-contact-message col-6">Перейти к чату</button>
+                <button type="button" class="btn btn-success btn-status-success col-6 px-2">Завершить</button>
+                <button type="button" class="btn btn-danger btn-status-reject col-6 px-2">Забраковать</button>
             </div>
             
             <div class="modal-footer">
@@ -107,7 +104,8 @@
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>`,
                                 'chatId': '{{$c->chat_id}}',
                                 'bs-toggle': 'modal',
-                                'bs-target': '#contactModal'
+                                'bs-target': '#contactModal',
+                                'bs-chatid': '{{$c->chat_id}}'
                             },
                         @endif
                     @endforeach
@@ -117,65 +115,113 @@
         ]
     });
 
-    $('.btn-status-success').on('click', function () {
-        const chatId = $(this).data('chatid');
+    const exampleModal = document.getElementById('contactModal');
 
-        $.ajax({
-            url: '/changestatus',
-            method: 'POST',
-            dataType: 'json',
-            data: {
-                chatId: chatId,
-                status: 'success'
-            },
-            success: function (data) {
-                if (data.status == 'ok') {
-                    // Remove from kanban
-                    $(this).parent().parent().parent().remove();
+    if (exampleModal) {
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const chatId = button.getAttribute('data-bs-chatid');
+        
+            statusSuccess(chatId);
+            statusReject(chatId);
+            contactMessage(chatId);
+        });
+    }
 
-                    $('.toast-body').text('Контакт переведён в статус завершён');
-
+    const statusSuccess = (chatId) => {
+        $('.btn-status-success').off('click').on('click', function () {
+            const chatId = $(this).data('chatid');
+    
+            $.ajax({
+                url: '/changestatus',
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    chatId: chatId,
+                    status: 'success'
+                },
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        // Remove from kanban
+                        $(this).parent().parent().parent().remove();
+    
+                        $('.toast-body').text('Контакт переведён в статус завершён');
+    
+                        const toastElList = document.querySelectorAll('.toast');
+                        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+                    }
+                },
+                error: function () {
+                    $('.toast-body').text('Ошибка изменения статуса');
+    
                     const toastElList = document.querySelectorAll('.toast');
                     const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
                 }
-            },
-            error: function () {
-                $('.toast-body').text('Ошибка изменения статуса');
-
-                const toastElList = document.querySelectorAll('.toast');
-                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-            }
+            });
         });
-    });
+    };
 
-    $('.btn-contact-message').on('click', function () {
-        const chatId = $(this).data('chatid');
-
-        console.log(chatId);
-
-        $.ajax({
-            url: '/chatiframe',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                chatId: chatId
-            },
-            success: function (data) {
-                if (data.status == 'ok') {
-                    window.open(data.iframeurl, '_blank');
+    const statusReject = (chatId) => {
+        $('.btn-status-reject').off('click').on('click', function () {
+            const chatId = $(this).data('chatid');
+    
+            $.ajax({
+                url: '/changestatus',
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    chatId: chatId,
+                    status: 'reject'
+                },
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        // Remove from kanban
+                        $(this).parent().parent().parent().remove();
+    
+                        $('.toast-body').text('Контакт переведён в статус забракован');
+    
+                        const toastElList = document.querySelectorAll('.toast');
+                        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+                    }
+                },
+                error: function () {
+                    $('.toast-body').text('Ошибка изменения статуса');
+    
+                    const toastElList = document.querySelectorAll('.toast');
+                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
                 }
-            },
-            error: function () {
-                $('.toast-body').text('Произошла ошибка во время открытия чата');
-
-                const toastElList = document.querySelectorAll('.toast');
-                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-            }
+            });
         });
-    });
+    };
 
-    $('.btn-status-danger').on('click', function () {
-
-    });
+    const contactMessage = (chatId) => {
+        $('.btn-contact-message').off('click').on('click', function () {
+            const chatId = $(this).data('chatid');
+    
+            console.log(chatId);
+    
+            $.ajax({
+                url: '/chatiframe',
+                method: 'GET',
+                dataType: 'json',
+                data: {
+                    chatId: chatId
+                },
+                success: function (data) {
+                    if (data.status == 'ok') {
+                        window.open(data.iframeurl, '_blank');
+                    }
+                },
+                error: function () {
+                    $('.toast-body').text('Произошла ошибка во время открытия чата');
+    
+                    const toastElList = document.querySelectorAll('.toast');
+                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+                }
+            });
+        });
+    };
 </script>
 @endsection
