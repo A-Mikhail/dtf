@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container">
-    <h4>{{$client}}</h4>
+    <h4>{{$client->chat_id}}</h4>
 </div>
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
