@@ -72,6 +72,7 @@
         responsivePercentage: true,
         dragBoards: false, 
         click: function (el) {
+            window.open(`/client/${$(el).data('chatid')}`, '_blank');
         },
         dropEl: function (el, target, source, sibling) {
             $.ajax({
@@ -103,9 +104,6 @@
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>`,
                                 'chatId': '{{$c->chat_id}}',
-                                'bs-toggle': 'modal',
-                                'bs-target': '#contactModal',
-                                'bs-chatid': '{{$c->chat_id}}'
                             },
                         @endif
                     @endforeach
@@ -114,106 +112,5 @@
             @endforeach
         ]
     });
-
-    const exampleModal = document.getElementById('contactModal');
-
-    if (exampleModal) {
-        exampleModal.addEventListener('show.bs.modal', event => {
-            // Button that triggered the modal
-            const button = event.relatedTarget
-            // Extract info from data-bs-* attributes
-            const chatId = button.getAttribute('data-bs-chatid');
-        
-            statusSuccess(chatId);
-            statusReject(chatId);
-            contactMessage(chatId);
-        });
-    }
-
-    const statusSuccess = (chatId) => {
-        $('.btn-status-success').off('click').on('click', function () {
-            $.ajax({
-                url: '/changestatus',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    chatId: chatId,
-                    status: 'success'
-                },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        // Remove from kanban
-                        $(this).parent().parent().parent().remove();
-    
-                        $('.toast-body').text('Контакт переведён в статус завершён');
-    
-                        const toastElList = document.querySelectorAll('.toast');
-                        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                    }
-                },
-                error: function () {
-                    $('.toast-body').text('Ошибка изменения статуса');
-    
-                    const toastElList = document.querySelectorAll('.toast');
-                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                }
-            });
-        });
-    };
-
-    const statusReject = (chatId) => {
-        $('.btn-status-reject').off('click').on('click', function () {
-            $.ajax({
-                url: '/changestatus',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    chatId: chatId,
-                    status: 'reject'
-                },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        // Remove from kanban
-                        $(this).parent().parent().parent().remove();
-    
-                        $('.toast-body').text('Контакт переведён в статус забракован');
-    
-                        const toastElList = document.querySelectorAll('.toast');
-                        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                    }
-                },
-                error: function () {
-                    $('.toast-body').text('Ошибка изменения статуса');
-    
-                    const toastElList = document.querySelectorAll('.toast');
-                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                }
-            });
-        });
-    };
-
-    const contactMessage = (chatId) => {
-        $('.btn-contact-message').off('click').on('click', function () {
-            $.ajax({
-                url: '/chatiframe',
-                method: 'GET',
-                dataType: 'json',
-                data: {
-                    chatId: chatId
-                },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        window.open(data.iframeurl, '_blank');
-                    }
-                },
-                error: function () {
-                    $('.toast-body').text('Произошла ошибка во время открытия чата');
-    
-                    const toastElList = document.querySelectorAll('.toast');
-                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                }
-            });
-        });
-    };
 </script>
 @endsection
