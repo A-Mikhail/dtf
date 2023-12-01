@@ -14,7 +14,7 @@ class Client_Controller extends Base_Controller {
             'payment' => 'warning', 
             'shipment' => 'success');
 
-        $client = Client::where('chat_id', '=', $id)->get(array('name', 'chat_id', 'current_status', 'updated_at'))->first();
+        $client = Client::where('chat_id', '=', $id)->first(array('name', 'chat_id', 'current_status', 'updated_at'));
 
         return View::make("dtf.client")
             ->with('client', $client)
