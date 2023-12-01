@@ -16,9 +16,32 @@ class Client_Controller extends Base_Controller {
 
         $client = Client::where('chat_id', '=', $id)->first(array('name', 'chat_id', 'current_status', 'updated_at'));
 
+        if (!is_null($client)) {
+            $body = (object)array(
+                "user" => array(
+                    "id" => (string)Auth::user()->id,
+                    "name" => Auth::user()->username
+                ),
+                "scope" => "card",
+                "filter" => array(array(
+                    "chatType" => "whatsapp",
+                    "chatId" => $client->chat_id,
+                    "name" => $client->name
+                )),
+                "options" => array(
+                    "useDealsEvents" => true
+                )
+            );
+        } else {
+            return Response::json("Can't find the client", 400);
+        }
+
+        $iframe_link = Wazzup::send('iframe', json_encode($body), 'POST');
+
         return View::make("dtf.client")
             ->with('client', $client)
-            ->with('statuses', $statuses);
+            ->with('statuses', $statuses)
+            ->with('iframelink', $iframe_link->url);
     }
 
     public function post_changestatus() {

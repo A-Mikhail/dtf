@@ -7,8 +7,12 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <h4>{{$client->chat_id}}</h4>
+<div class="container pt-4">
+    <h5>{{$client->chat_id}}</h5>
+
+    <div class="col-6">
+        <iframe src="{{$iframelink}}" allow="microphone *"  class="wd-100p border-0"></iframe>
+    </div>
 </div>
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -79,30 +83,6 @@
                 },
                 error: function () {
                     $('.toast-body').text('Ошибка изменения статуса');
-    
-                    const toastElList = document.querySelectorAll('.toast');
-                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
-                }
-            });
-        });
-    };
-
-    const contactMessage = (chatId) => {
-        $('.btn-contact-message').off('click').on('click', function () {
-            $.ajax({
-                url: '/chatiframe',
-                method: 'GET',
-                dataType: 'json',
-                data: {
-                    chatId: chatId
-                },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        window.open(data.iframeurl, '_blank');
-                    }
-                },
-                error: function () {
-                    $('.toast-body').text('Произошла ошибка во время открытия чата');
     
                     const toastElList = document.querySelectorAll('.toast');
                     const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
