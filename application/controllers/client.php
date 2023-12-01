@@ -1,6 +1,6 @@
 <?php
 
-class Kanban_Controller extends Base_Controller {
+class Client_Controller extends Base_Controller {
     public $restful = true;
 
     public function get_index($id) {
