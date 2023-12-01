@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container">
-    <h4>{{$client->chat_id}}</h4>
+    <h4>{{var_dump($client)}}</h4>
 </div>
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
