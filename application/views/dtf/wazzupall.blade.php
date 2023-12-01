@@ -1,5 +1,5 @@
 @layout('layout')
 
 @section('content')
-    <iframe src="{{$iframeurl}}" allow="microphone *"  class="w-100 border-0" style="height: calc(100% - 152px); width: 100vw; padding: 0; margin: 0; left: 0; position: absolute;"></iframe>
+    <iframe src="{{$iframeurl}}" allow="microphone *"  class="w-100 h-100 m-0 p-0 border-0"></iframe>
 @endsection
