@@ -19,6 +19,8 @@ Route::group(array('before' => 'auth'), function () {
 
 	Route::get('/client/table', array('uses'=>'table@index'));
 	Route::get('/client/(:num)', array('uses' => 'client@index'));
+
+	Route::get('/wazzup/all', array('uses' => 'wazzupall@all'));
 });
 
 /*
