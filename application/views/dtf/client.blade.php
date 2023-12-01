@@ -9,9 +9,14 @@
 @section('content')
 <div class="container pt-4">
     <h5>{{$client->chat_id}}</h5>
+    <div class="mb-1 text-body-secondary">{{$client->name}}</div>
 
-    <div class="col-6">
-        <iframe src="{{$iframelink}}" allow="microphone *"  class="wd-100p border-0"></iframe>
+    <div class="row" class="height: 80%;">
+        <div class="col-12 col-md-6">
+            <iframe src="{{$iframelink}}" allow="microphone *"  class="w-100 h-100 border-0"></iframe>
+        </div>
+
+        <div class="col-6"></div>
     </div>
 </div>
 
