@@ -72,7 +72,7 @@
             </div>
         </header>
 
-        <div class="flex-grow-1 overflow-auto">
+        <div class="flex-grow-1">
             @yield('content')
         </div>
     </div>
