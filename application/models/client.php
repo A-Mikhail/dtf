@@ -21,12 +21,24 @@ class Client extends Eloquent {
 
 	public function getlog() {
 		$to_return = DB::table('events')->where('chat_id', '=', $this->chat_id)->get();
-
+		
 		if (empty($to_return)) {
 			$to_return = false;
+		} else {
+			foreach ($to_return as $k => $v) {
+				if ($to_return[$k] == 'author') {
+					$to_return[$k] = $this->fio($v);
+				}
+			}
 		}
 		
 		return $to_return;
+	}
+
+	private function fio($id) {
+		$fio = Client::where('id','=', $id)->get('username');
+
+		return $fio;
 	}
 
 	public function rustatus() {
