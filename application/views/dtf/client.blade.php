@@ -79,60 +79,56 @@
 <script>
     const toastBootstrap = new bootstrap.Toast($('#toast')[0]);
 
-    const statusSuccess = (chatId) => {
-        $('.btn-status-success').off('click').on('click', function () {
-            $.ajax({
-                url: '/changestatus',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    chatId: chatId,
-                    status: 'success'
-                },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        $('.toast-body').text('Контакт переведён в статус завершён');
+    $('.btn-status-success').off('click').on('click', function () {
+        $.ajax({
+            url: '/changestatus',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                chatId: chatId,
+                status: 'success'
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    $('.toast-body').text('Контакт переведён в статус завершён');
 
-                        toastBootstrap.show();
-                    }
-                },
-                error: function () {
-                    $('.toast-body').text('Ошибка изменения статуса');
-                    
                     toastBootstrap.show();
                 }
-            });
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка изменения статуса');
+                
+                toastBootstrap.show();
+            }
         });
-    };
+    });
 
-    const statusReject = (chatId) => {
-        $('.btn-status-reject').off('click').on('click', function () {
-            $.ajax({
-                url: '/changestatus',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    chatId: chatId,
-                    status: 'reject'
-                },
-                success: function (data) {
-                    if (data.status == 'ok') {
-                        $('.toast-body').text('Контакт переведён в статус забракован');
-    
-                        const toast = document.getElementById('toast');
+    $('.btn-status-reject').off('click').on('click', function () {
+        $.ajax({
+            url: '/changestatus',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                chatId: chatId,
+                status: 'reject'
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    $('.toast-body').text('Контакт переведён в статус забракован');
 
-                        const toastBootstrap = bootstrap.Toast(toast);
-                        toastBootstrap.show();
-                    }
-                },
-                error: function () {
-                    $('.toast-body').text('Ошибка изменения статуса');
-    
-                    const toastElList = document.querySelectorAll('.toast');
-                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+                    const toast = document.getElementById('toast');
+
+                    const toastBootstrap = bootstrap.Toast(toast);
+                    toastBootstrap.show();
                 }
-            });
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка изменения статуса');
+
+                const toastElList = document.querySelectorAll('.toast');
+                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+            }
         });
-    };
+    });
 </script>
 @endsection
