@@ -16,7 +16,7 @@ class Kanban_Controller extends Base_Controller {
             'payment' => 'warning', 
             'shipment' => 'success');
 
-        $clients = Client::where_not_in('current_status', $exclude_statuses)->get(array('name', 'chat_id', 'current_status', 'updated_at'));
+        $clients = Client::where_not_in('current_status', $exclude_statuses)->order_by('id', 'desc')->get(array('name', 'chat_id', 'current_status', 'updated_at'));
 
         return View::make("dtf.kanban")
             ->with('clients', $clients)
@@ -36,39 +36,6 @@ class Kanban_Controller extends Base_Controller {
             return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
         } else {
             return Response::json('Client is empty', 400);
-        }
-    }
-
-    public function get_chatiframe() {
-        $chatId = Input::get('chatId');
-        $client = Client::where('chat_id', '=', $chatId)->first();
-
-        if (!is_null($client)) {
-            $body = (object)array(
-                "user" => array(
-                    "id" => (string)Auth::user()->id,
-                    "name" => Auth::user()->username
-                ),
-                "scope" => "card",
-                "filter" => array(array(
-                    "chatType" => "whatsapp",
-                    "chatId" => $chatId,
-                    "name" => $client->name
-                )),
-                "options" => array(
-                    "useDealsEvents" => true
-                )
-            );
-        } else {
-            return Response::json("Can't find requested client", 400);
-        }
-
-        $iframe_link = Wazzup::send('iframe', json_encode($body), 'POST');
-
-        if (property_exists($iframe_link, 'url')) {
-            return Response::json(array('status'=>'ok', 'message'=>'link generated', 'code'=>'0200', 'iframeurl' => $iframe_link->url));
-        } else {
-            return Response::json('Error while generating contact link', 400);
         }
     }
 }
