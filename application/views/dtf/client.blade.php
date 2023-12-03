@@ -29,7 +29,7 @@
 
                             <div class="d-flex gap-2 w-100 justify-content-between">
                                 <div>
-                                    <h6 class="mb-0">{{$cl->rustatus()}}</h6>
+                                    <h6 class="mb-0">{{$cl->type}}</h6>
                                     <p class="mb-0 opacity-75">{{$cl->comment}}</p>
                                     <p class="mb-0 opacity-75">{{$cl->author}}</p>
                                 </div>
