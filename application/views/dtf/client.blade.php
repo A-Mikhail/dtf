@@ -15,9 +15,9 @@
             <div class="mb-1 text-body-secondary">{{$client->name}}</div>
         </div>
 
-        <div class="col-6">
-            <button type="button" class="btn btn-success btn-status-success col-6 px-2">Завершить</button>
-            <button type="button" class="btn btn-danger btn-status-reject col-6 px-2">Забраковать</button>
+        <div class="col-6 d-flex flex-row justify-content-end align-items-center gap-2">
+            <button type="button" class="btn btn-success btn-status-success px-2">Завершить</button>
+            <button type="button" class="btn btn-danger btn-status-reject px-2">Забраковать</button>
         </div>
     </div>
 
