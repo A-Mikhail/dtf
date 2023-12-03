@@ -95,9 +95,9 @@ class Webhooks_Controller extends Base_Controller {
     }
 
     private function create_client ($data) {
-        $client = Client::where('chat_id', '=', $data->chatId)->get();
+        $client = Client::where('chat_id', '=', $data->chatId)->first();
         
-        if (empty($client)) {
+        if (is_null($client)) {
             $client = new Client();
     
             // By default 1, we don't have another users in Wazzup
