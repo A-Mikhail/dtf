@@ -33,8 +33,8 @@
 
     <div class="row h-100">
         <!-- WA Chat -->
-        <div class="col-12 col-md-7">
-            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0" style="max-height: 80%;"></iframe>
+        <div class="col-12 col-md-7 h-100">
+            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0 h-100 max-h-100"></iframe>
         </div>
 
         <!-- Logs -->
