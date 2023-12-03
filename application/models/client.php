@@ -19,6 +19,16 @@ class Client extends Eloquent {
 		return true;
 	}
 
+	public function getlog() {
+		$to_return = DB::table('events')->where('chat_id', '=', $this->chat_id)->get();
+
+		if ($to_return->isEmpty()) {
+			$to_return = false;
+		}
+		
+		return $to_return;
+	}
+
 	public function rustatus() {
 		$status = $this->current_status;
 

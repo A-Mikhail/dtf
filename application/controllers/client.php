@@ -32,6 +32,8 @@ class Client_Controller extends Base_Controller {
                     "useDealsEvents" => true
                 )
             );
+
+            $clientLog = $client->getlog();
         } else {
             return Response::json("Can't find the client", 400);
         }
@@ -41,7 +43,8 @@ class Client_Controller extends Base_Controller {
         return View::make("dtf.client")
             ->with('client', $client)
             ->with('statuses', $statuses)
-            ->with('iframelink', $iframe_link->url);
+            ->with('iframelink', $iframe_link->url)
+            ->with('clientLog', $clientLog);
     }
 
     public function post_changestatus() {
