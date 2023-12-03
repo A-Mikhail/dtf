@@ -36,7 +36,7 @@ class Client extends Eloquent {
 	}
 
 	private function fio($id) {
-		$fio = User::where('id','=', $id)->get('username');
+		$fio = User::where('id','=', $id)->first('username');
 
 		return $fio;
 	}
