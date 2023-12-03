@@ -40,26 +40,24 @@
         <!-- Logs -->
         <div class="col-12 col-md-5">
             @if($clientLog)
-            <div class="d-flex justify-content-center overflow-y-auto h-50 mt-4">
+            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 80%">
                 <div class="list-group">
                     @foreach($clientLog as $cl)
-                        <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                            <div class="d-flex gap-2 w-100 justify-content-between">
-                                <div>
-                                    @if($cl->type == 'status')
-                                    <h6 class="mb-0 fw-bold">Статус</h6>
-                                    @endif
-                                    <p class="mb-0 opacity-75">{{$cl->comment}}</p>
-                                    <small class="mb-0 opacity-75">{{$cl->author}}</small>
-                                </div>
-                                <small class="opacity-50 text-nowrap">{{date_format(date_create($cl->created_at), 'd.m.Y')}}</small>
-                            </div>
-                        </a>
+                    <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
+                        <div>
+                            @if($cl->type == 'status')
+                            <h6 class="mb-0 fw-bold">Статус</h6>
+                            @endif
+                            <p class="mb-0 opacity-75">{{$cl->comment}}</p>
+                            <small class="mb-0 opacity-75">{{$cl->author}}</small>
+                        </div>
+                        <small class="opacity-50 text-nowrap">{{date_format(date_create($cl->created_at), 'd.m.Y')}}</small>
+                    </div>
                     @endforeach
                 </div>
             </div>
             @else
-            <div class="d-flex justify-content-center overflow-y-auto h-50 mt-4">
+            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 80%">
                 <div class="list-group">
                     <p>Нет истории на данного клиента</p>
                 </div>
