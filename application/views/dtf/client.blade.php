@@ -34,13 +34,13 @@
     <div class="row h-100">
         <!-- WA Chat -->
         <div class="col-12 col-md-7">
-            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 h-100 border-0"></iframe>
+            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0" style="max-height: 80%;"></iframe>
         </div>
 
         <!-- Logs -->
         <div class="col-12 col-md-5">
             @if($clientLog)
-            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 80%">
+            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
                     @foreach($clientLog as $cl)
                     <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
@@ -57,9 +57,11 @@
                 </div>
             </div>
             @else
-            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 80%">
+            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
-                    <p>Нет истории на данного клиента</p>
+                    <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
+                        <p>Нет истории на данного клиента</p>
+                    </div>
                 </div>
             </div>
             @endif
