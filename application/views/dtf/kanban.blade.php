@@ -43,6 +43,8 @@
 @endsection
 
 @section('js')
+<script src="/libs/socket.io.min.js"></script>
+
 <script>
     new jKanban({
         element: '#kanban',
@@ -91,5 +93,15 @@
             @endforeach
         ]
     });
+
+    const wsHost = 'ws-counters-other.wazzup24.com';
+    // Опции подключения
+    const connectOptions = {
+        path: '/ws-counters/',
+        transports: ['websocket', 'polling']
+    };
+    
+    // Подключение
+    const client = io(`https://${wsHost}`, connectOptions);
 </script>
 @endsection
