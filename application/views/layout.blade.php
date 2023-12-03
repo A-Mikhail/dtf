@@ -78,6 +78,7 @@
     </div>
 
     <script src='/libs/jquery/jquery-3.7.1.min.js'></script>
+    <script src='/libs/popper.min.js'></script>
     <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
     <script src='/libs/jkanban/jkanban.min.js'></script>
 

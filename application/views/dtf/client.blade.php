@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
         <strong class="me-auto">Оповещение</strong>
         <small class="text-body-secondary">Только что</small>
@@ -85,9 +85,6 @@
                 },
                 success: function (data) {
                     if (data.status == 'ok') {
-                        // Remove from kanban
-                        $(this).parent().parent().parent().remove();
-
                         $('.toast-body').text('Контакт переведён в статус завершён');
     
                         const toastElList = document.querySelectorAll('.toast');
@@ -116,13 +113,12 @@
                 },
                 success: function (data) {
                     if (data.status == 'ok') {
-                        // Remove from kanban
-                        $(this).parent().parent().parent().remove();
-    
                         $('.toast-body').text('Контакт переведён в статус забракован');
     
-                        const toastElList = document.querySelectorAll('.toast');
-                        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+                        const toast = document.getElementById('toast');
+
+                        const toastBootstrap = bootstrap.Toast(toast);
+                        toastBootstrap.show();
                     }
                 },
                 error: function () {
