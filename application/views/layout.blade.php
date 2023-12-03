@@ -81,7 +81,7 @@
     <script src='/libs/jkanban/jkanban.min.js'></script>
 
     <script src='/main.js'></script>
-
+    
     @yield('js')
 </body>
 

@@ -96,7 +96,7 @@
 
     // apiKey интеграции, полученный из личного кабинета Wazzup
     const apiKey = '38bf7b77d71c43dbaa07b9ed936af840';
-    
+
     // id менеджера из вашей CRM
     const userId = '1';
 
@@ -122,15 +122,18 @@
                     userId
                 });
             });
-            // Подтверждение подключения
-            client.on('counterConnected', () => console.log('Connected to Wazzup notifications!'));
+
             // Обновление счетчика неотвеченных
             client.on('counterUpdate', (data) => {
                 // используйте counter для работы через веб-сокеты
                 // или counterV2 + type для работы по новому механизму подсчета неотвеченных
                 // type может быть 'red' или 'grey', в случае если counterV2>0 или null, если counterV2 = 0
                 const { counter, counterV2, type } = data;
-                document.getElementById('counter').innerHTML = counter;
+
+                const myBadgerOptions = {}; // See: constructor for customization options
+                const myBadger = new Badger(myBadgerOptions);
+
+                myBadger.value = counter;
             });
         })
         .catch((error) => {
