@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="d-flex flex-column overflow-hidden min-vh-100 vh-100">
+    <div class="d-flex flex-column min-vh-100 vh-100">
         <header class="p-1 bg-body-tertiary border-bottom">
             <div class="container d-flex flex-wrap">
                 <ul class="nav me-auto">
@@ -72,9 +72,7 @@
             </div>
         </header>
 
-        <div class="flex-grow-1">
-            @yield('content')
-        </div>
+        @yield('content')
     </div>
 
     <script src='/libs/jquery/jquery-3.7.1.min.js'></script>

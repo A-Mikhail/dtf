@@ -38,7 +38,7 @@
         </div>
 
         <!-- Logs -->
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-md-5 h-100">
             @if($clientLog)
             <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
