@@ -73,11 +73,14 @@
         </div>
     </div>
 </div>
+
+<input type="hidden" name="chat_id" value="{{$client->chat_id}}">
 @endsection
 
 @section('js')
 <script>
     const toastBootstrap = new bootstrap.Toast($('#toast')[0]);
+    const chatId = $('input[name="chat_id"]').val();
 
     $('.btn-status-success').off('click').on('click', function () {
         $.ajax({
