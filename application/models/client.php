@@ -26,10 +26,8 @@ class Client extends Eloquent {
 			$to_return = false;
 		} else {
 			foreach ($to_return as $k => $v) {
-				if ($to_return[$k] == 'author') {
-					var_dump($this->fio($v));
-					die();
-					$to_return[$k] = $this->fio($v);
+				if ($to_return[$k]->author) {
+					$to_return[$k]->author = $this->fio($to_return[$k]->author);
 				}
 			}
 		}
@@ -38,7 +36,7 @@ class Client extends Eloquent {
 	}
 
 	private function fio($id) {
-		$fio = Client::where('id','=', $id)->get('username');
+		$fio = User::where('id','=', $id)->get('username');
 
 		return $fio;
 	}
