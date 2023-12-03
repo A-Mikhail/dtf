@@ -16,8 +16,18 @@
         </div>
 
         <div class="col-6 d-flex flex-row justify-content-end align-items-center gap-2">
+            @if($client->current_status == 'success')
+            <button type="button" class="btn btn-success btn-status-success px-2" disabled>Завершить</button>
+            @else
             <button type="button" class="btn btn-success btn-status-success px-2">Завершить</button>
+            @endif
+
+            @if($client->current_status == 'reject')
+            <button type="button" class="btn btn-danger btn-status-reject px-2" disabled>Забраковать</button>
+            @else
             <button type="button" class="btn btn-danger btn-status-reject px-2">Забраковать</button>
+            @endif
+
         </div>
     </div>
 
