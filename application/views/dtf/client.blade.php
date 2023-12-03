@@ -40,7 +40,7 @@
         <!-- Logs -->
         <div class="col-12 col-md-5">
             @if($clientLog)
-            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center overflow-y-auto h-50 mt-4">
                 <div class="list-group">
                     @foreach($clientLog as $cl)
                         <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
@@ -59,7 +59,7 @@
                 </div>
             </div>
             @else
-            <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center overflow-y-auto h-50 mt-4">
                 <div class="list-group">
                     <p>Нет истории на данного клиента</p>
                 </div>
