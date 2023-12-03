@@ -59,8 +59,8 @@
     </div>
 </div>
 
-<div class="toast-container p-3 top-0 end-0" id="toastPlacement" data-original-class="toast-container p-3">
-    <div class="toast fade show">
+<div class="toast-container p-3 top-0 end-0">
+    <div class="toast fade">
         <div id="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <strong class="me-auto">Оповещение</strong>
