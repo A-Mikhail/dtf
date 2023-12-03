@@ -60,8 +60,8 @@
 </div>
 
 <div class="toast-container p-3 top-0 end-0">
-    <div class="toast fade">
-        <div id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast fade" id="toast">
+        <div role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <strong class="me-auto">Оповещение</strong>
                 <small class="text-body-secondary">Только что</small>
