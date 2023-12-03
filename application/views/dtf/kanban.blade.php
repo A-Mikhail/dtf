@@ -100,8 +100,16 @@
         path: '/ws-counters/',
         transports: ['websocket', 'polling']
     };
-    
+
     // Подключение
     const client = io(`https://${wsHost}`, connectOptions);
+
+    io.on("connection", (socket) => {
+        socket.emit("counterConnecting",  {
+            "type": "api_v3", // Константное значение
+            "apiKey": "38bf7b77d71c43dbaa07b9ed936af840", // API ключ интеграции
+            "userId": "1" // Id пользователя в CRM
+        });
+    });
 </script>
 @endsection
