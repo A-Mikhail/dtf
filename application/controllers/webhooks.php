@@ -110,6 +110,9 @@ class Webhooks_Controller extends Base_Controller {
             $client->current_status = 'new';
     
             $client->save();
+
+            echo 'new client';
+            die();
         }
     }
 }
