@@ -93,51 +93,5 @@
             @endforeach
         ]
     });
-
-    // apiKey интеграции, полученный из личного кабинета Wazzup
-    const apiKey = '38bf7b77d71c43dbaa07b9ed936af840';
-
-    // id менеджера из вашей CRM
-    const userId = '1';
-
-    // Опции подключения к сервису нотификаций
-    const connectOptions = {
-        path: '/ws-counters/',
-        transports: ['websocket', 'polling']
-    };
-
-    // Получаем url для подключения к сервису нотификаций
-    fetch(`https://integrations.wazzup24.com/counters/ws_host/api_v3/${apiKey}`)
-        .then((response) => response.json())
-        .then((data) => {
-            const { host } = data;
-            // Подключаемся при помощи socket.io
-            const client = io(`https://${host}`, connectOptions);
-            // Слушаем событие 'connect'
-            client.on('connect', () => {
-                // Завершаем подключение: транслируем событие 'counterConnecting', в котором передаем данные клиента
-                client.emit('counterConnecting', {
-                    type: 'api_v3',
-                    apiKey,
-                    userId
-                });
-            });
-
-            // Обновление счетчика неотвеченных
-            client.on('counterUpdate', (data) => {
-                // используйте counter для работы через веб-сокеты
-                // или counterV2 + type для работы по новому механизму подсчета неотвеченных
-                // type может быть 'red' или 'grey', в случае если counterV2>0 или null, если counterV2 = 0
-                const { counter, counterV2, type } = data;
-
-                const myBadgerOptions = {}; // See: constructor for customization options
-                const myBadger = new Badger(myBadgerOptions);
-
-                myBadger.value = counter;
-            });
-        })
-        .catch((error) => {
-            console.log('Connection error', error);
-        });
 </script>
 @endsection
