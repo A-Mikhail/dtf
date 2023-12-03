@@ -20,7 +20,7 @@ class Client extends Eloquent {
 	}
 
 	public function getlog() {
-		$to_return = DB::table('events')->where('chat_id', '=', $this->chat_id)->get();
+		$to_return = DB::table('events')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->get();
 		
 		if (empty($to_return)) {
 			$to_return = false;

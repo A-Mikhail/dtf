@@ -29,7 +29,9 @@
 
                             <div class="d-flex gap-2 w-100 justify-content-between">
                                 <div>
-                                    <h6 class="mb-0">{{$cl->type}}</h6>
+                                    @if($cl->type == 'status')
+                                    <h6 class="mb-0">Статус</h6>
+                                    @endif
                                     <p class="mb-0 opacity-75">{{$cl->comment}}</p>
                                     <p class="mb-0 opacity-75">{{$cl->author}}</p>
                                 </div>
