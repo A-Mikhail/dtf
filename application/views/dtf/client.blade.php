@@ -8,17 +8,27 @@
 
 @section('content')
 <div class="container pt-4" style="height: 80%;">
-    <h5>{{$client->chat_id}}</h5>
-    <div class="mb-1 text-body-secondary">{{$client->name}}</div>
+    <!-- Header -->
+    <div class="pb-2 border-bottom">
+        <div class="col-6">
+            <h5>{{$client->chat_id}}</h5>
+            <div class="mb-1 text-body-secondary">{{$client->name}}</div>
+        </div>
+
+        <div class="col-6">
+            <button type="button" class="btn btn-success btn-status-success col-6 px-2">Завершить</button>
+            <button type="button" class="btn btn-danger btn-status-reject col-6 px-2">Забраковать</button>
+        </div>
+    </div>
 
     <div class="row h-100">
         <!-- WA Chat -->
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-7">
             <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 h-100 border-0"></iframe>
         </div>
 
         <!-- Logs -->
-        <div class="col-6">
+        <div class="col-12 col-md-5">
             @if($clientLog)
             <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
                 <div class="list-group">

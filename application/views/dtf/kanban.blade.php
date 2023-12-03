@@ -40,27 +40,6 @@
     <div class="toast-body">
     </div>
 </div>
-
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="contactModalTitle">Выберите действие</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body d-flex flex-column align-items-center" style="gap: 1em;">
-                <button type="button" class="btn btn-primary btn-contact-message col-6">Перейти к чату</button>
-                <button type="button" class="btn btn-success btn-status-success col-6 px-2">Завершить</button>
-                <button type="button" class="btn btn-danger btn-status-reject col-6 px-2">Забраковать</button>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('js')
