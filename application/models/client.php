@@ -27,6 +27,7 @@ class Client extends Eloquent {
 		} else {
 			foreach ($to_return as $k => $v) {
 				if ($to_return[$k] == 'author') {
+					var_dump($this->fio($v));
 					$to_return[$k] = $this->fio($v);
 				}
 			}
