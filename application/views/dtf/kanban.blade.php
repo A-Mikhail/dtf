@@ -43,8 +43,6 @@
 @endsection
 
 @section('js')
-<script src="/libs/socket.io.min.js"></script>
-
 <script>
     new jKanban({
         element: '#kanban',
