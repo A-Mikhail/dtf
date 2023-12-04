@@ -34,7 +34,7 @@
                 @foreach($clients as $c)
                 <tr>
                     <td>{{$c->id}}</td>
-                    <td>{{$c->chat_id}}</td>
+                    <td><a href="/client/{{$c->chat_id}}">{{$c->chat_id}}</a></td>
                     <td>{{$c->name}}</td>
                     <td>{{$c->current_status}}</td>
                     <td>{{$c->updated_at}}</td>
