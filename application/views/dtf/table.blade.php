@@ -12,7 +12,7 @@
                 <option value="">Все статусы</option>
 
                 @foreach($uniqieStatuses as $us)
-                    <option value="{{$us)}}">{{$us}}</option>
+                    <option value="{{$us}}">{{$us}}</option>
                 @endforeach
             </select>
         </div>
