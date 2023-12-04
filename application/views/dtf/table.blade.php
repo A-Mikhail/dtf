@@ -7,14 +7,17 @@
 @section('content')
 <div class="container">
     <div class="px-4 py-5 my-5">
-        <div>
-            <select class="form-control select2 col dtable-filter" id="status_filter" data-placeholder="Все статусы">
-                <option value="">Все статусы</option>
 
-                @foreach($uniqueStatuses as $us)
-                    <option value="{{$us}}">{{$us}}</option>
-                @endforeach
-            </select>
+        <div class="row">
+            <div class="col-3 pb-4 align-items-end">
+                <select class="form-control dtable-filter" id="status_filter" data-placeholder="Все статусы">
+                    <option value="">Все статусы</option>
+
+                    @foreach($uniqueStatuses as $us)
+                        <option value="{{$us}}">{{$us}}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <table id="clientTable" class="mx-auto mb-4 display">
