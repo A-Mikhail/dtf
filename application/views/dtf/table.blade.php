@@ -49,7 +49,7 @@
 <script>
 	$.fn.dataTable.ext.search.push(
 		function( settings, data, dataIndex ) {
-			if (data[8]==$('#status_filter').val()){
+			if (data[3]==$('#status_filter').val()){
 				return true;
 			}else if($('#status_filter').val()==''){
 				return true;
