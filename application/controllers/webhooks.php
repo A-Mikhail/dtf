@@ -114,6 +114,6 @@ class Webhooks_Controller extends Base_Controller {
             $client->save();
         }
 
-        var_dump('nope old');
+        var_dump($data->chatId);
     }
 }
