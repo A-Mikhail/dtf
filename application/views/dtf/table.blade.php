@@ -11,8 +11,8 @@
             <select class="form-control select2 col dtable-filter" id="status_filter" data-placeholder="Все статусы">
                 <option value="">Все статусы</option>
 
-                @foreach($clients as $c)
-                    <option value="{{array_unique($c->current_status)}}">{{$c->current_status}}</option>
+                @foreach($array_unique($clients)->current_status as $c)
+                    <option value="{{$c->current_status)}}">{{$c->current_status}}</option>
                 @endforeach
             </select>
         </div>
