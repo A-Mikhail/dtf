@@ -17,15 +17,15 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($clients as $c)
             <tr>
-                @foreach($clients as $c)
-                    <td>{{$c->id}}</td>
-                    <td>{{$c->chat_id}}</td>
-                    <td>{{$c->name}}</td>
-                    <td>{{$c->current_status}}</td>
-                    <td>{{$c->updated_at}}</td>
-                @endforeach
+                <td>{{$c->id}}</td>
+                <td>{{$c->chat_id}}</td>
+                <td>{{$c->name}}</td>
+                <td>{{$c->current_status}}</td>
+                <td>{{$c->updated_at}}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
