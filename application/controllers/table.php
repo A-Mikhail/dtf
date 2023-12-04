@@ -9,10 +9,10 @@ class Table_Controller extends Base_Controller {
         $clientstat_uniq = array();
 
         foreach ($clients as $client) {
-            if (!in_array($client->current_status, $clientstat_uniq)) {
+            if (!in_array($client->rustatus(), $clientstat_uniq)) {
                 $clientstat_uniq[] = $client->rustatus();
             }   
-             
+
             $client->current_status = $client->rustatus();
         }
         
