@@ -6,7 +6,17 @@
 
 @section('content')
 <div class="container">
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="px-4 py-5 my-5">
+        <div>
+            <select class="form-control select2 col dtable-filter" id="status_filter" data-placeholder="Все статусы">
+                <option value="">Все статусы</option>
+
+                @foreach($clients as $c)
+                    <option value="{{$c->current_status}}">{{$c->current_status}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <table id="clientTable" class="mx-auto mb-4 display">
             <thead>
                 <tr>
@@ -37,6 +47,21 @@
 <script src="/libs/datatable/jquery.dataTables.min.js"></script>
 
 <script>
+	$.fn.dataTable.ext.search.push(
+		function( settings, data, dataIndex ) {
+			if (data[8]==$('#status_filter').val()){
+				return true;
+			}else if($('#status_filter').val()==''){
+				return true;
+			}
+			return false;
+		}
+	);
+
+    $("#status_filter").on('change keyup click',function(){
+        $('#clientTable').DataTable().draw();
+    });
+
     let table = new DataTable('#clientTable', {
         responsive: true,
         language: {
