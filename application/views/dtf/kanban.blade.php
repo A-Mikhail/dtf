@@ -1,6 +1,8 @@
 @layout('layout')
 
 @section('csstop')
+<link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
+
 <style>
     .kanban-board .kanban-drag {
         max-height: 80vh !important;
@@ -43,6 +45,8 @@
 @endsection
 
 @section('js')
+<script src='/libs/jkanban/jkanban.min.js'></script>
+
 <script>
     new jKanban({
         element: '#kanban',

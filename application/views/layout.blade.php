@@ -15,7 +15,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
 
@@ -86,7 +85,7 @@
     <script src='/libs/jquery/jquery-3.7.1.min.js'></script>
     <script src='/libs/popper.min.js'></script>
     <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
-    <script src='/libs/jkanban/jkanban.min.js'></script>
+    <script src="/libs/socket.io.min.js"></script>
 
     <script src='/main.js'></script>
 
