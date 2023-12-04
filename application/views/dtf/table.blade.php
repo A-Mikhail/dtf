@@ -11,9 +11,9 @@
             <select class="form-control select2 col dtable-filter" id="status_filter" data-placeholder="Все статусы">
                 <option value="">Все статусы</option>
 
-                <?php $uarr = array_unique($clients['current_status']); var_dump($uarr); die(); ?>
-
-        
+                @foreach($uniqieStatuses as $us)
+                    <option value="{{$us)}}">{{$us}}</option>
+                @endforeach
             </select>
         </div>
 
