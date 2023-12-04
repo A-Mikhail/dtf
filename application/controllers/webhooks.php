@@ -4,6 +4,10 @@ class Webhooks_Controller extends Base_Controller {
     public $restful = true;
 
     public function post_getall() {
+        // We should return 200 ok
+        // Return it early so we didn't receive duplicate
+        Response::json(array('status'=>'ok'));
+
         $tz = new DateTimeZone('Asia/Almaty');
 
         $payload=file_get_contents("php://input");
@@ -15,6 +19,9 @@ class Webhooks_Controller extends Base_Controller {
         if (error_get_last() != JSON_ERROR_NONE) {
             if (property_exists($response, 'messages')) {
                 $messageArr = $response->messages[0];
+
+                // First create client
+                self::create_client($messageArr);
 
                 $message = new Message();
                 $message->message_id = $messageArr->messageId;
@@ -85,21 +92,14 @@ class Webhooks_Controller extends Base_Controller {
                 }
 
                 $message->save();
-
-                self::create_client($messageArr);
             }
         }
-
-        // We should return 200 ok
-        return Response::json(array('status'=>'ok'));
     }
 
     private function create_client ($data) {
         $client = Client::where('chat_id', '=', '770755093172')->first();
         
         if (is_null($client)) {
-            var_dump('make new client');
-
             $client = new Client();
     
             // By default 1, we don't have another users in Wazzup
@@ -113,7 +113,5 @@ class Webhooks_Controller extends Base_Controller {
     
             $client->save();
         }
-
-        var_dump($data->chatId);
     }
 }
