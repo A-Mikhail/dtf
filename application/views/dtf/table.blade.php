@@ -12,9 +12,8 @@
                 <option value="">Все статусы</option>
 
                 <?php $uarr = array_unique($clients)->current_status; var_dump($uarr); die(); ?>
-                @foreach(array_unique($clients)->current_status as $c)
-                    <option value="{{$c->current_status)}}">{{$c->current_status}}</option>
-                @endforeach
+
+        
             </select>
         </div>
 
