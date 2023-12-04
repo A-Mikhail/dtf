@@ -12,7 +12,7 @@
                 <option value="">Все статусы</option>
 
                 @foreach($clients as $c)
-                    <option value="{{$c->current_status}}">{{$c->current_status}}</option>
+                    <option value="{{array_unique($c->current_status)}}">{{$c->current_status}}</option>
                 @endforeach
             </select>
         </div>
