@@ -9,11 +9,11 @@ class Table_Controller extends Base_Controller {
         $clientstat_uniq = array();
 
         foreach ($clients as $client) {
-            $client->current_status = $client->rustatus();
-
             if (!in_array($client->current_status, $clientstat_uniq)) {
                 $clientstat_uniq[] = $client->rustatus();
-            }    
+            }   
+             
+            $client->current_status = $client->rustatus();
         }
         
         return View::make("dtf.table")
