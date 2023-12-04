@@ -8,8 +8,8 @@
 <div class="container">
     <div class="px-4 py-5 my-5">
 
-        <div class="row">
-            <div class="col-3 pb-4 align-items-end">
+        <div class="row justify-content-end">
+            <div class="col-3 pb-4">
                 <select class="form-control dtable-filter" id="status_filter" data-placeholder="Все статусы">
                     <option value="">Все статусы</option>
 
