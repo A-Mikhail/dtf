@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="px-4 py-5 my-5 text-center">
-        <table id="clientTable" class="d-block mx-auto mb-4">
+        <table id="clientTable" class="mx-auto mb-4 display">
             <thead>
                 <tr>
                     <th>Id</th>
