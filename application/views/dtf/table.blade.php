@@ -38,7 +38,7 @@
 
 <script>
     let table = new DataTable('#clientTable', {
-        responsive: true
+        responsive: true,
         language: {
             sProcessing: "Подождите...",
             sLengthMenu: "Показать _MENU_ записей",
