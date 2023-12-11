@@ -6,9 +6,10 @@ class Client extends Eloquent {
 	public function log($type, $comment, $bot = false) {
 		if ($bot) {
 			$user = User::where('id', '=', 3)->first();
+		} else {
+			$user = Auth::user();
 		}
-		
-		$user = Auth::user();
+
 
 		$ins = array(
 			'author' => $user->id,
