@@ -43,6 +43,9 @@ class Client_Controller extends Base_Controller {
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
 
+        var_dump($iframe_link);
+        die();
+
         return View::make("dtf.client")
             ->with('client', $client)
             ->with('statuses', $statuses)
