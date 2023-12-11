@@ -38,9 +38,8 @@ class Client_Controller extends Base_Controller {
             return Response::json("Can't find the client", 400);
         }
 
-        var_dump(json_encode($body));
-        die();
-        
+       phpinfo(); 
+       
         $iframe_link = Wazzup::send('iframe', json_encode($body), 'POST');
 
         return View::make("dtf.client")
