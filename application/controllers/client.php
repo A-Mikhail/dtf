@@ -41,7 +41,6 @@ class Client_Controller extends Base_Controller {
         $iframe_link = Wazzup::send('iframe', json_encode($body), 'POST');
 
         var_dump(json_encode($body));
-        die();
 
         return View::make("dtf.client")
             ->with('client', $client)
