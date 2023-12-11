@@ -7,6 +7,7 @@ class Wazzup {
             $header = array(
                 'Authorization: Bearer '.self::$token,
                 'Content-Type: application/json',
+                'Content-Encoding: gzip'
             );
     
             $ch = curl_init();
