@@ -113,7 +113,7 @@ class Webhooks_Controller extends Base_Controller {
     
             $client->save();
         } else {
-            if ($client->current_status == 'reject') {
+            if ($client->current_status == 'reject' || $client->current_status == 'success') {
                 $client->current_status = 'new';
                 $client->log('status', 'Новое сообщение. Возвращаем статус на ' . $client->rustatus());
                 $client->save();     
