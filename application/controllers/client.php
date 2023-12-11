@@ -41,7 +41,7 @@ class Client_Controller extends Base_Controller {
         $iframe_link = Wazzup::send('iframe', json_encode($body), 'POST');
 
 
-        return $iframe_link;
+        return json_decode($iframe_link);
     }
 
     public function post_changestatus() {
