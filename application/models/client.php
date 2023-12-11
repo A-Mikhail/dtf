@@ -3,7 +3,11 @@
 class Client extends Eloquent {
 	public static $table = 'clients';
 
-	public function log($type, $comment) {
+	public function log($type, $comment, $bot = false) {
+		if ($bot) {
+			$user = User::where('id', '=', 3)->first();
+		}
+		
 		$user = Auth::user();
 
 		$ins = array(
