@@ -129,17 +129,13 @@
                 if (data.status == 'ok') {
                     $('.toast-body').text('Контакт переведён в статус забракован');
 
-                    const toast = document.getElementById('toast');
-
-                    const toastBootstrap = bootstrap.Toast(toast);
                     toastBootstrap.show();
                 }
             },
             error: function () {
                 $('.toast-body').text('Ошибка изменения статуса');
-
-                const toastElList = document.querySelectorAll('.toast');
-                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
+                
+                toastBootstrap.show();
             }
         });
     });
