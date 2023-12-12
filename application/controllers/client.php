@@ -14,7 +14,7 @@ class Client_Controller extends Base_Controller {
             'payment' => 'warning', 
             'shipment' => 'success');
 
-        $client = Client::where('chat_id', '=', $id)->first(array('name', 'chat_id', 'current_status', 'updated_at'));
+        $client = Client::where('chat_id', '=', $id)->first(array('name', 'chat_id', 'chat_type', 'current_status', 'updated_at'));
 
         if (!is_null($client)) {
             $body = (object)array(
@@ -24,7 +24,7 @@ class Client_Controller extends Base_Controller {
                 ),
                 "scope" => "card",
                 "filter" => array(array(
-                    "chatType" => "whatsgroup",
+                    "chatType" => $client->chat_type,
                     "chatId" => $client->chat_id,
                     "name" => $client->name
                 )),
