@@ -160,7 +160,8 @@ fetch(`https://integrations.wazzup24.com/counters/ws_host/api_v3/${apiKey}`)
 			const { counter, counterV2, type } = data;
 
 			var favicon = new Favico({
-				animation : 'popFade'
+				animation : 'popFade',
+				element: document.getElementById('badge-icon')
 			});
 
 			document.title = `(${counter}) ${title}`;
