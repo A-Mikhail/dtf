@@ -55,6 +55,8 @@
                         <div>
                             @if($cl->type == 'status')
                             <h6 class="mb-0 fw-bold">Статус</h6>
+                            @elseif($cl->type == 'price')
+                            <h6 class="mb-0 fw-bold">Цена</h6>
                             @endif
                             <p class="mb-0 opacity-75">{{$cl->comment}}</p>
                             <small class="mb-0 opacity-75">{{$cl->author}}</small>
