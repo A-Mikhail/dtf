@@ -39,16 +39,16 @@
 
         <!-- Logs -->
         <div class="col-12 col-md-5 h-100">
-            <form class="card p-2">
+            <form class="card p-2 mt-4">
                 <div class="input-group">
-                    <label for="price" class="form-label">Стоимость</label>
+                    
                     <input type="number" id="price" class="form-control" placeholder="Стоимость">
-                    <button type="submit" class="btn btn-secondary">Сохранить</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>
             </form>
 
             @if($clientLog)
-            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 70%">
+            <div class="overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
                     @foreach($clientLog as $cl)
                     <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             @else
-            <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 70%">
+            <div class="overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
                     <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
                         <p>Нет истории на данного клиента</p>
