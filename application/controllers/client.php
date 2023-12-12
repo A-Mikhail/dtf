@@ -24,6 +24,7 @@ class Client_Controller extends Base_Controller {
                 ),
                 "scope" => "card",
                 "filter" => array(array(
+                    "chatType" => "whatsapp",
                     "chatId" => $client->chat_id,
                     "name" => $client->name
                 )),
