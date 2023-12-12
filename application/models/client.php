@@ -33,7 +33,7 @@ class Client extends Eloquent {
 
 		DB::table('deals')->insert($setPrice);
 
-		$this->log('price', 'Цена изменена на ' . $price);
+		$this->log('price', 'Цена изменена на ' . $price . 'т');
 
 		return true;
 	}

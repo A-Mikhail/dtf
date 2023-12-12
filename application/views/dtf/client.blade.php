@@ -39,13 +39,13 @@
 
         <!-- Logs -->
         <div class="col-12 col-md-5 h-100">
-            <form class="card p-2 mt-4">
+            <div class="card p-2 mt-4">
                 <div class="input-group">
                     
                     <input type="number" id="price" class="form-control" placeholder="Стоимость">
-                    <button type="submit" class="btn btn-primary btn-save-price">Сохранить</button>
+                    <button class="btn btn-primary btn-save-price">Сохранить</button>
                 </div>
-            </form>
+            </div>
 
             @if($clientLog)
             <div class="overflow-y-auto mt-4" style="height: 70%">
