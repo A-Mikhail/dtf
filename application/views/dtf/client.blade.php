@@ -39,6 +39,14 @@
 
         <!-- Logs -->
         <div class="col-12 col-md-5 h-100">
+            <form class="card p-2">
+                <div class="input-group">
+                    <label for="price" class="form-label">Стоимость</label>
+                    <input type="number" id="price" class="form-control" placeholder="Стоимость">
+                    <button type="submit" class="btn btn-secondary">Сохранить</button>
+                </div>
+            </form>
+
             @if($clientLog)
             <div class="d-flex justify-content-center overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
