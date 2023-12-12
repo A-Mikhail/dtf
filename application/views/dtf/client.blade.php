@@ -43,7 +43,7 @@
                 <div class="input-group">
                     
                     <input type="number" id="price" class="form-control" placeholder="Стоимость">
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="submit" class="btn btn-primary btn-save-price">Сохранить</button>
                 </div>
             </form>
 
@@ -136,6 +136,32 @@
             success: function (data) {
                 if (data.status == 'ok') {
                     $('.toast-body').text('Контакт переведён в статус забракован');
+
+                    toastBootstrap.show();
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка изменения статуса');
+                
+                toastBootstrap.show();
+            }
+        });
+    });
+
+    $('.btn-save-price').off('click').on('click', function () {
+        const priceVal = $('#price').val();
+
+        $.ajax({
+            url: '/setprice',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                chatId: chatId,
+                price: priceVal
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    $('.toast-body').text('Сумма сохранена');
 
                     toastBootstrap.show();
                 }

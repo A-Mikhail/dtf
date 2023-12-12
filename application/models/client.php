@@ -10,7 +10,6 @@ class Client extends Eloquent {
 			$user = Auth::user();
 		}
 
-
 		$ins = array(
 			'author' => $user->id,
 			'type' => $type,
@@ -20,6 +19,21 @@ class Client extends Eloquent {
 		);
 
 		DB::table('events')->insert($ins);
+
+		return true;
+	}
+
+	public function price($price) {
+		$setPrice = array(
+			'author' =>  Auth::user()->id,
+			'chat_id' => $this->chat_id,
+			'price' => $price,
+			'created_at' => new DateTime()
+		);
+
+		DB::table('deals')->insert($setPrice);
+
+		$this->log('price', 'Цена изменена на ' . $price);
 
 		return true;
 	}
