@@ -133,6 +133,8 @@ const connectOptions = {
 	transports: ['websocket', 'polling']
 };
 
+const title = document.title;
+
 // Получаем url для подключения к сервису нотификаций
 fetch(`https://integrations.wazzup24.com/counters/ws_host/api_v3/${apiKey}`)
 	.then((response) => response.json())
@@ -157,10 +159,12 @@ fetch(`https://integrations.wazzup24.com/counters/ws_host/api_v3/${apiKey}`)
 			// type может быть 'red' или 'grey', в случае если counterV2>0 или null, если counterV2 = 0
 			const { counter, counterV2, type } = data;
 
-			const myBadgerOptions = {}; // See: constructor for customization options
-			const myBadger = new Badger(myBadgerOptions);
+			var favicon = new Favico({
+				animation : 'popFade'
+			});
 
-			myBadger.value = counter;
+			document.title = `(${counter}) ${title}`;
+			favicon.badge(counter);
 		});
 	})
 	.catch((error) => {

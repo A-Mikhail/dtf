@@ -87,6 +87,8 @@
     <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
     <script src="/libs/socket.io.min.js"></script>
 
+    <script src="/libs/favico-0.3.10.min.js"></script>
+    
     <script src='/main.js'></script>
 
     @yield('js')
