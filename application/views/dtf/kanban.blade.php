@@ -84,9 +84,9 @@
                     @foreach($clients as $c)
                         @if ($c->current_status == $status) 
                             {
-                                @if($client->getPrice())
+                                @if($c->getPrice())
                                     'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p> 
-                                        <p class="m-0 item-subtitle">{{$c->name}}</p> <span class="fs-5">{{$client->getPrice()}} ₸</span>`,
+                                        <p class="m-0 item-subtitle">{{$c->name}}</p> <span class="fs-5">{{$c->getPrice()}} ₸</span>`,
                                     
                                 @else
                                     'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p> 
