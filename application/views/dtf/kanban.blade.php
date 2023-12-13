@@ -85,7 +85,7 @@
                         @if ($c->current_status == $status) 
                             {
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
-                                    <p class="m-0 item-subtitle">{{$c->name}}</p> {{ @if($c->getPrice()) <span class="fs-5">$c->getPrice() ₸</span> @endif }}`,
+                                    <p class="m-0 item-subtitle">{{$c->name}}</p> {{@if($c->getPrice()) $c->getPrice() ₸ @endif}}`,
                                 'chatId': '{{$c->chat_id}}',
                             },
                         @endif
