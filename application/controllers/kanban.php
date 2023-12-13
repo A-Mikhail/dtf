@@ -16,7 +16,7 @@ class Kanban_Controller extends Base_Controller {
             'payment' => 'warning', 
             'shipment' => 'success');
 
-        $clients = Client::where_not_in('current_status', $exclude_statuses)->order_by('updated_at', 'desc')->get(array('name', 'chat_id', 'current_status', 'updated_at'));
+        $clients = Client::where_not_in('current_status', $exclude_statuses)->order_by('updated_at', 'desc')->distinct()->get(array('name', 'chat_id', 'current_status', 'updated_at'));
 
         return View::make("dtf.kanban")
             ->with('clients', $clients)
