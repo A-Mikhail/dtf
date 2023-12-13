@@ -25,8 +25,8 @@ class Kanban_Controller extends Base_Controller {
         ->order_by('recent_update', 'desc')
         ->group_by('clients.name', 'clients.chat_id', 'clients.current_status')
         ->distinct()
-        ->get(array('clients.name', 'clients.chat_id', 'clients.current_status', 'messages.date_time as recent_update'))
-        ->max('recent_update');
+        ->max('recent_update')
+        ->get(array('clients.name', 'clients.chat_id', 'clients.current_status', 'messages.date_time as recent_update'));
 
         return View::make("dtf.kanban")
             ->with('clients', $clients)
