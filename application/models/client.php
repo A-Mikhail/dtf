@@ -39,7 +39,7 @@ class Client extends Eloquent {
 	}
 
 	public function getPrice() {
-		$price = DB::table('price')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->first();
+		$price = DB::table('deals')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->first();
 
 		if (!is_null($price)) {
 			return $price;
