@@ -15,6 +15,10 @@
             <div class="mb-1 text-body-secondary">{{$client->name}}</div>
         </div>
 
+        @if($client->getPrice())
+        <div class="col-3">{{$client->getPrice()}}</div>
+        @endif
+
         <div class="col-6 d-flex flex-row justify-content-end align-items-center gap-2">
             @if($client->current_status == 'success')
             <button type="button" class="btn btn-success btn-status-success px-2" disabled>Завершить</button>
@@ -27,7 +31,6 @@
             @else
             <button type="button" class="btn btn-danger btn-status-reject px-2">Забраковать</button>
             @endif
-
         </div>
     </div>
 

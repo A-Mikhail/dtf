@@ -38,6 +38,16 @@ class Client extends Eloquent {
 		return true;
 	}
 
+	public function getPrice() {
+		$price = DB::table('price')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->first();
+
+		if (!is_null($price)) {
+			return $price;
+		} else {
+			return false;
+		}
+	}
+
 	public function getlog() {
 		$to_return = DB::table('events')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->get();
 		

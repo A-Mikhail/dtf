@@ -15,7 +15,7 @@ class Client_Controller extends Base_Controller {
             'shipment' => 'success');
 
         $client = Client::where('chat_id', '=', $id)->first(array('name', 'chat_id', 'chat_type', 'current_status', 'updated_at'));
-
+        
         if (!is_null($client)) {
             $body = (object)array(
                 "user" => array(
