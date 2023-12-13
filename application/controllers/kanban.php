@@ -20,7 +20,7 @@ class Kanban_Controller extends Base_Controller {
         // from clients inner join messages on clients.chat_id = messages.chat_id  
         // where current_status not in ('success', 'reject') order by messages.date_time desc
 
-        $clients = DB::table('clients')->join('messages', 'clients.chat_id', '=', 'messages.chat_id COLLATE utf8mb4_unicode_ci')
+        $clients = DB::table('clients')->join('messages', 'clients.chat_id', '=', 'messages.chat_id')
             ->where_not_in('clients.current_status', $exclude_statuses)
             ->order_by('messages.date_time', 'desc')
             ->distinct()
