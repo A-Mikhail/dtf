@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/main.css?v=0.0.1'>
 
     @yield('csstop')
 </head>
