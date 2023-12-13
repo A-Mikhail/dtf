@@ -16,10 +16,10 @@
         </div>
 
         @if($client->getPrice())
-        <div class="col-3">{{$client->getPrice()}}</div>
+        <div class="col-3">{{$client->getPrice()}} ₸</div>
         @endif
 
-        <div class="col-6 d-flex flex-row justify-content-end align-items-center gap-2">
+        <div class="col-3 d-flex flex-row justify-content-end align-items-center gap-2">
             @if($client->current_status == 'success')
             <button type="button" class="btn btn-success btn-status-success px-2" disabled>Завершить</button>
             @else
