@@ -78,7 +78,7 @@
             @foreach($statuses as $status => $color)
             {
                 'id': '{{$status}}',
-                'title': '{{__("statuses.$status") count($status)}}',
+                'title': '{{__("statuses.$status")}}',
                 'class': 'bg-{{$color}}, text-white',
                 'item': [
                     @foreach($clients as $c)
