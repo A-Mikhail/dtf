@@ -1,28 +1,35 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: 'Golos UI';
-	src: url(/fonts/golosui/golos-ui_regular.woff) format('woff');
+	font-family: 'Root UI Light';
+	src: url(/fonts/rootui/pt-root-ui_light.woff) format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Root UI';
+	src: url(/fonts/rootui/pt-root-ui_regular.woff) format('woff');
 	font-weight: 500;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'Golos UI 700';
-	src: url(/fonts/golosui/golos-ui_medium.woff) format('woff');
+	font-family: 'Root UI 700';
+	src: url(/fonts/rootui/pt-root-ui_medium.woff) format('woff');
 	font-weight: 700;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'Golos UI 900';
-	src: url(/fonts/golosui/golos-ui_bold.woff) format('woff');
+	font-family: 'Root UI 900';
+	src: url(/fonts/rootui/pt-root-ui_bold.woff) format('woff');
 	font-weight: 900;
 	font-style: normal;
 }
 
 :root {
-	--bs-font-sans-serif: 'Golos UI', sans-serif;
+	--bs-font-sans-serif: 'Root UI', sans-serif;
 	--bs-body-font-family: var(--bs-font-sans-serif);
 	--bs-body-font-size: 1rem;
 	--bs-body-font-weight: 400;

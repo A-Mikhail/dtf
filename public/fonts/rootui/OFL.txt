@@ -1,6 +1,6 @@
 Copyright (c) 2018, Paratype Inc (https://paratype.com),
 Copyright (c) 2018, Paratype Ltd,
-with Reserved Font Name "Golos UI".
+with Reserved Font Name "PT Root UI".
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
