@@ -15,9 +15,11 @@
             <div class="mb-1 text-body-secondary">{{$client->name}}</div>
         </div>
 
-        @if($client->getPrice())
-        <div class="col-3">{{$client->getPrice()}} ₸</div>
-        @endif
+        <div class="col-3">
+            @if($client->getPrice())
+                {{$client->getPrice()}} ₸
+            @endif
+        </div>
 
         <div class="col-3 d-flex flex-row justify-content-end align-items-center gap-2">
             @if($client->current_status == 'success')

@@ -42,7 +42,7 @@ class Client extends Eloquent {
 		$deals = DB::table('deals')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->first();
 
 		if (!is_null($deals)) {
-			return $deals->price;
+			return number_format($deals->price,0,'.',' ');
 		} else {
 			return false;
 		}
