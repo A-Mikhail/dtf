@@ -20,12 +20,12 @@ class Kanban_Controller extends Base_Controller {
         // from clients inner join messages on clients.chat_id = messages.chat_id  
         // where current_status not in ('success', 'reject') order by messages.date_time desc
 
-        $clients = DB::table('clients')->join('messages', 'clients.chat_id', '=', 'messages.chat_id')
+        $clients = DB::table('clients')->max('messages.date_time')->join('messages', 'clients.chat_id', '=', 'messages.chat_id')
         ->where_not_in('clients.current_status', $exclude_statuses)
         ->order_by('messages.date_time', 'desc')
         ->group_by('clients.name', 'clients.chat_id', 'clients.current_status')
         ->distinct()
-        ->max('messages.date_time')
+        
         ->get(array('clients.name', 'clients.chat_id', 'clients.current_status'));
 
         return View::make("dtf.kanban")
