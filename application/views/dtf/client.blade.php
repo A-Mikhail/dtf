@@ -17,7 +17,7 @@
 
         <div class="col-3">
             @if($client->getPrice())
-                {{$client->getPrice()}} ₸
+            <span class="fs-5">{{$client->getPrice()}} ₸</span>
             @endif
         </div>
 
