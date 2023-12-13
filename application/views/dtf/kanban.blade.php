@@ -86,7 +86,7 @@
                             {
                                 @if($c->getPrice())
                                     'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p> 
-                                        <p class="m-0 item-subtitle">{{$c->name}}</p> <span class="fs-5">{{$c->getPrice()}} ₸</span>`,
+                                        <p class="m-0 item-subtitle">{{$c->name}}</p> <span>{{$c->getPrice()}} ₸</span>`,
                                     
                                 @else
                                     'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p> 
