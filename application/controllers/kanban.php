@@ -21,11 +21,12 @@ class Kanban_Controller extends Base_Controller {
         // where current_status not in ('success', 'reject') order by messages.date_time desc
 
         $clients = DB::table('clients')->join('messages', 'clients.chat_id', '=', 'messages.chat_id')
+            ->max('messages.date_time')
             ->where_not_in('clients.current_status', $exclude_statuses)
-            ->order_by('new_update', 'desc')
+            ->order_by('messages.date_time', 'desc')
             ->group_by('clients.name', 'clients.chat_id', 'clients.current_status')
             ->distinct()
-            ->get(array('clients.name', 'clients.chat_id', 'clients.current_status', 'max(messages.date_time) as new_update'));
+            ->get(array('clients.name', 'clients.chat_id', 'clients.current_status'));
 
         return View::make("dtf.kanban")
             ->with('clients', $clients)
