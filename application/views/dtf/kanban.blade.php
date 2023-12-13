@@ -84,8 +84,14 @@
                     @foreach($clients as $c)
                         @if ($c->current_status == $status) 
                             {
-                                'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
-                                    <p class="m-0 item-subtitle">{{$c->name}}</p> {{@if($c->getPrice()) $c->getPrice() ₸ @endif}}`,
+                                @if($client->getPrice())
+                                    'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p> 
+                                        <p class="m-0 item-subtitle">{{$c->name}}</p> <span class="fs-5">{{$client->getPrice()}} ₸</span>`,
+                                    
+                                @else
+                                    'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p> 
+                                        <p class="m-0 item-subtitle">{{$c->name}}</p>`,
+                                @endif
                                 'chatId': '{{$c->chat_id}}',
                             },
                         @endif
