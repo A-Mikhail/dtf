@@ -37,21 +37,23 @@
     </div>
 
     <!-- Change statuses and set price -->
-    <div class="row pb-2">
+    <div class="row pb-2 mt-4">
         <div class="col-12 col-md-7">
-            <select class="form-control dtable-filter" id="status_filter" data-placeholder="Новый статус">
-                <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
+            <div class="col-12 col-md-6">
+                <select class="form-control status-select" data-placeholder="Новый статус">
+                    <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
 
-                @foreach($statuses as $s)
-                    @if($s != $client->current_status)
-                        <option value="{{$s}}">{{__("statuses.$s")}}</option>
-                    @endif
-                @endforeach
-            </select>
+                    @foreach($statuses as $s)
+                        @if($s != $client->current_status)
+                            <option value="{{$s}}">{{__("statuses.$s")}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <div class="col-12 col-md-5">
-            <div class="card p-2 mt-4">
+            <div class="card p-2">
                 <div class="input-group">
                     
                     <input type="number" id="price" class="form-control" placeholder="Стоимость">
@@ -64,7 +66,7 @@
     <div class="row h-100">
         <!-- WA Chat -->
         <div class="col-12 col-md-7 h-100">
-            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0 h-100 max-h-100"></iframe>
+            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 h-100 max-h-100"></iframe>
         </div>
 
         <!-- Logs -->
@@ -186,6 +188,32 @@
             success: function (data) {
                 if (data.status == 'ok') {
                     $('.toast-body').text('Сумма сохранена');
+
+                    toastBootstrap.show();
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка изменения статуса');
+                
+                toastBootstrap.show();
+            }
+        });
+    });
+
+    $('.status-select').on('change', function() {
+        console.log($(this).val());
+
+        $.ajax({
+            url: '/changestatus',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                chatId: chatId,
+                status: $(this).val()
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    $('.toast-body').text(`Статус успешно изменён на ${$(this).text()}`);
 
                     toastBootstrap.show();
                 }
