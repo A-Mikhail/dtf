@@ -16,13 +16,9 @@ class Kanban_Controller extends Base_Controller {
             'payment' => 'warning', 
             'shipment' => 'success');
 
-        // select distinct name, clients.chat_id, current_status, messages.date_time 
-        // from clients inner join messages on clients.chat_id = messages.chat_id  
-        // where current_status not in ('success', 'reject') order by messages.date_time desc
-
-        $clients =  DB::query("select distinct clients.name, clients.chat_id, clients.current_status, MAX(messages.date_time) AS new_update
+        $clients =  DB::query("select distinct clients.name, clients.chat_id, clients.current_status, created_at, MAX(messages.date_time) AS new_update
         from clients inner join messages on clients.chat_id = messages.chat_id 
-        where current_status not in ('success', 'reject') 
+        where current_status not in " . $exclude_statuses ."
         GROUP BY clients.chat_id, clients.name, clients.current_status
         ORDER BY new_update DESC");
 
