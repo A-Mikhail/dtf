@@ -84,10 +84,10 @@
                     @foreach($clients as $c)
                         @if ($c->current_status == $status) 
                             {
-                                @if($c->price)
+                                @if($c->last_price)
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>
-                                    <p class="m-0" style="font-size: small;">{{number_format($c->price,0,'.',' ')}} ₸</p>
+                                    <p class="m-0" style="font-size: small;">{{number_format($c->last_price,0,'.',' ')}} ₸</p>
                                     <p style="font-size: small;" class="text-end m-0">{{date_format(date_create($c->created_at), 'd.m.Y')}}</p>`,
                                 @else
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
