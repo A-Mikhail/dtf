@@ -85,7 +85,7 @@
                         @if ($c->current_status == $status) 
                             {
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
-                                    <span>{{date_format(date_create($c->created_at), 'd.m.Y')}}</span>
+                                    <span style="font-size: small;">{{date_format(date_create($c->created_at), 'd.m.Y')}}</span>
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>`,
                                 'chatId': '{{$c->chat_id}}',
                             },
