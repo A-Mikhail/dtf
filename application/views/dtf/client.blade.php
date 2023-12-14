@@ -36,9 +36,9 @@
         </div>
     </div>
 
-    <div class="row h-100">
-        <!-- WA Chat -->
-        <div class="col-12 col-md-7 h-100">
+    <!-- Change statuses and set price -->
+    <div class="row pb-2">
+        <div class="col-12 col-md-7">
             <select class="form-control dtable-filter" id="status_filter" data-placeholder="Новый статус">
                 <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
 
@@ -48,12 +48,9 @@
                     @endif
                 @endforeach
             </select>
-
-            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0 h-100 max-h-100"></iframe>
         </div>
 
-        <!-- Logs -->
-        <div class="col-12 col-md-5 h-100">
+        <div class="col-12 col-md-5">
             <div class="card p-2 mt-4">
                 <div class="input-group">
                     
@@ -61,7 +58,17 @@
                     <button class="btn btn-primary btn-save-price">Сохранить</button>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div class="row h-100">
+        <!-- WA Chat -->
+        <div class="col-12 col-md-7 h-100">
+            <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0 h-100 max-h-100"></iframe>
+        </div>
+
+        <!-- Logs -->
+        <div class="col-12 col-md-5 h-100">
             @if($clientLog)
             <div class="overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
