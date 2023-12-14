@@ -201,8 +201,6 @@
     });
 
     $('.status-select').on('change', function() {
-        console.log($(this).val());
-
         $.ajax({
             url: '/changestatus',
             method: 'POST',
@@ -213,7 +211,7 @@
             },
             success: function (data) {
                 if (data.status == 'ok') {
-                    $('.toast-body').text(`Статус успешно изменён на ${$(this).text()}`);
+                    $('.toast-body').text(`Статус успешно изменён на ${$(".status-select option:selected").text()}`);
 
                     toastBootstrap.show();
                 }
