@@ -84,9 +84,16 @@
                     @foreach($clients as $c)
                         @if ($c->current_status == $status) 
                             {
+                                @if($c->price)
+                                'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
+                                    <span style="font-size: small;">{{date_format(date_create($c->created_at), 'd.m.Y')}}</span>
+                                    <p class="m-0 item-subtitle">{{$c->name}}</p>
+                                    <span style="font-size: small;">{{number_format($c->price,0,'.',' ')}}</span>`,
+                                @else
                                 'title': `<p class="fw-bold m-0 item-title">{{$c->chat_id}}</p>
                                     <span style="font-size: small;">{{date_format(date_create($c->created_at), 'd.m.Y')}}</span>
                                     <p class="m-0 item-subtitle">{{$c->name}}</p>`,
+                                @endif
                                 'chatId': '{{$c->chat_id}}',
                             },
                         @endif
