@@ -39,6 +39,16 @@
     <div class="row h-100">
         <!-- WA Chat -->
         <div class="col-12 col-md-7 h-100">
+            <select class="form-control dtable-filter" id="status_filter" data-placeholder="Новый статус">
+                <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
+
+                @foreach($statuses as $s)
+                    @if($s != $client->current_status)
+                        <option value="{{$s}}">{{__("statuses.$s")}}</option>
+                    @endif
+                @endforeach
+            </select>
+
             <iframe src="{{$iframelink}}" allow="microphone *" class="w-100 border-0 h-100 max-h-100"></iframe>
         </div>
 
