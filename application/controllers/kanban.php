@@ -4,7 +4,7 @@ class Kanban_Controller extends Base_Controller {
     public $restful = true;
 
     public function get_index() {
-        $exclude_statuses = array('reject', 'success');
+        $exclude_statuses = (string)array('reject', 'success');
         
         $statuses = array(
             'new' => 'primary', 
