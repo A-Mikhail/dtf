@@ -4,8 +4,6 @@ class Kanban_Controller extends Base_Controller {
     public $restful = true;
 
     public function get_index() {
-        $exclude_statuses = array('reject', 'success');
-        
         $statuses = array(
             'new' => 'primary', 
             'dtf' => 'dark', 
@@ -16,9 +14,9 @@ class Kanban_Controller extends Base_Controller {
             'payment' => 'warning', 
             'shipment' => 'success');
 
-        $clients =  DB::query("select distinct clients.name, clients.chat_id, clients.current_status, clients.created_at, MAX(messages.date_time) AS new_update
+        $clients = DB::query("select distinct clients.name, clients.chat_id, clients.current_status, clients.created_at, MAX(messages.date_time) AS new_update
         from clients inner join messages on clients.chat_id = messages.chat_id 
-        where current_status not in (". implode(", ", $exclude_statuses) .")
+        where current_status not in ('reject', 'success')
         GROUP BY clients.chat_id, clients.name, clients.current_status
         ORDER BY new_update DESC");
 
