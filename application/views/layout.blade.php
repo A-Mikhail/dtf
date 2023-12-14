@@ -67,10 +67,6 @@
                             {{Auth::user()->username}}
                         </a>
                         <ul class="dropdown-menu text-small">
-                            <li><a class="dropdown-item" href="/settings">Настройки</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                             <li><a class="dropdown-item" href="/logout">Выход</a></li>
                         </ul>
                     </div>
