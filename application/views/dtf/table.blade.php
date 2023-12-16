@@ -27,6 +27,7 @@
                     <th>Номер</th>
                     <th>Имя</th>
                     <th>Статус</th>
+                    <th>Цена</th>
                     <th>Обновлён</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@
                     <td><a href="/client/{{$c->chat_id}}" target="_blank">{{$c->chat_id}}</a></td>
                     <td>{{$c->name}}</td>
                     <td>{{$c->current_status}}</td>
+                    <td>{{$c->last_price}}</td>
                     <td>{{$c->updated_at}}</td>
                 </tr>
                 @endforeach
