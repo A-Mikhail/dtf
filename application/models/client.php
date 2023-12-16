@@ -70,8 +70,12 @@ class Client extends Eloquent {
 		return $fio->username;
 	}
 
-	public function rustatus() {
-		$status = $this->current_status;
+	public function rustatus($client = null) {
+		if ($client) {
+			$status = $client->current_status;
+		} else {
+			$status = $this->current_status;
+		}
 
 		$status_arr = array(
 			'new'           => 'Новый',
