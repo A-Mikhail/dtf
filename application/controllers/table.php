@@ -14,10 +14,10 @@ class Table_Controller extends Base_Controller {
 
         $clientstat_uniq = array();
 
-        $client = new Client;
+        $clientClass = new Client;
 
         foreach ($clients as $client) {
-            if (!in_array($client->rustatus($client), $clientstat_uniq)) {
+            if (!in_array($clientClass->rustatus($client), $clientstat_uniq)) {
                 $clientstat_uniq[] = $client->rustatus();
             }   
 
