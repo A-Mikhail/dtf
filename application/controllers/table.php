@@ -18,10 +18,10 @@ class Table_Controller extends Base_Controller {
 
         foreach ($clients as $client) {
             if (!in_array($clientClass->rustatus($client), $clientstat_uniq)) {
-                $clientstat_uniq[] = $client->rustatus();
+                $clientstat_uniq[] = $clientClass->rustatus($client);
             }   
 
-            $client->current_status = $client->rustatus();
+            $client->current_status = $clientClass->rustatus($client);
         }
         
         return View::make("dtf.table")
