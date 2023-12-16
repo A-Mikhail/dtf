@@ -99,7 +99,10 @@
         },
         dom: 'Bfrtip',
         buttons: [
-            'copyHtml5',
+            {
+                extend: 'copyHtml5',
+                text: 'Скопировать'
+            },
             'excelHtml5',
             'csvHtml5',
             'pdfHtml5'
