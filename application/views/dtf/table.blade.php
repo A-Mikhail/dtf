@@ -2,6 +2,7 @@
 
 @section('csstop')
 <link rel="stylesheet" href="/libs/datatable/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/libs/datatable/buttons.dataTables.min.css">
 @endsection
 
 @section('content')
@@ -50,6 +51,11 @@
 
 @section('js')
 <script src="/libs/datatable/jquery.dataTables.min.js"></script>
+<script src="/libs/datatable/buttons.html5.min.js"></script>
+<script src="/libs/datatable/dataTables.buttons.min.js"></script>
+<script src="/libs/datatable/jszip.min.js"></script>
+<script src="/libs/datatable/pdfmake.min.js"></script>
+<script src="/libs/datatable/vfs_fonts.js"></script>
 
 <script>
 	$.fn.dataTable.ext.search.push(
@@ -90,7 +96,14 @@
                 sSortAscending: ": активировать для сортировки столбца по возрастанию",
                 sSortDescending: ": активировать для сортировки столбцов по убыванию"
             }
-        }
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
     });
 </script>
 @endsection
