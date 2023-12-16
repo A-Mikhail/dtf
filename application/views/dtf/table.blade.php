@@ -51,10 +51,11 @@
 
 @section('js')
 <script src="/libs/datatable/jquery.dataTables.min.js"></script>
-<script src="/libs/datatable/buttons.html5.min.js"></script>
 <script src="/libs/datatable/dataTables.buttons.min.js"></script>
 <script src="/libs/datatable/jszip.min.js"></script>
+<script src="/libs/datatable/pdfmake.min.js"></script>
 <script src="/libs/datatable/vfs_fonts.js"></script>
+<script src="/libs/datatable/buttons.html5.min.js"></script>
 
 <script>
 	$.fn.dataTable.ext.search.push(
@@ -101,6 +102,7 @@
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
+            'pdfHtml5'
         ]
     });
 </script>
