@@ -7,7 +7,7 @@ class Kanban_Controller extends Base_Controller {
         $statuses = array(
             'new' => 'primary', 
             'dtf' => 'info',
-            'combined' => 'dark',
+            'combined' => 'warning',
             'uv' => 'dark', 
             'applying' => 'dark', 
             'printer' => 'secondary',
