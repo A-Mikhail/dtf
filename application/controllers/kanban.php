@@ -8,8 +8,8 @@ class Kanban_Controller extends Base_Controller {
             'new' => 'primary', 
             'dtf' => 'info',
             'combined' => 'warning',
-            'uv' => 'dark', 
-            'applying' => 'dark', 
+            'uv' => 'info', 
+            'applying' => 'info', 
             'printer' => 'secondary',
             'consumables' => 'danger',
             'shipment' => 'success');
