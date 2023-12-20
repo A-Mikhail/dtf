@@ -15,6 +15,9 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/libs/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/libs/mdb/mdb.min.css">
+
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css?v=0.0.2'>
 
     @yield('csstop')
@@ -77,14 +80,14 @@
         @yield('content')
     </div>
 
-    <script src='/libs/jquery/jquery-3.7.1.min.js'></script>
-    <script src='/libs/popper.min.js'></script>
-    <script src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
-    <script src="/libs/socket.io.min.js"></script>
+    <script type="text/javascript" src='/libs/jquery/jquery-3.7.1.min.js'></script>
+    <script type="text/javascript" src='/libs/popper.min.js'></script>
+    <script type="text/javascript" src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
+    <script type="text/javascript" src="/libs/socket.io.min.js"></script>
+    <script type="text/javascript" src="/libs/mdb/js/mdb.umd.min.js"></script>
+    <script type="text/javascript" src="/libs/favico-0.3.10.min.js"></script>
 
-    <script src="/libs/favico-0.3.10.min.js"></script>
-
-    <script src='/main.js?v=0.0.2'></script>
+    <script type="text/javascript" src='/main.js?v=0.0.2'></script>
 
     @yield('js')
 </body>
