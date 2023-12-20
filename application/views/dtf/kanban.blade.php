@@ -52,7 +52,7 @@
         element: '#kanban',
         gutter: '10px',
         widthBoard: '100%',
-        responsivePercentage: true,
+        responsivePercentage: false,
         dragBoards: false, 
         click: function (el) {
             window.open(`/client/${$(el).data('chatid')}`, '_blank');
