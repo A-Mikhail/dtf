@@ -4,7 +4,7 @@ class Client_Controller extends Base_Controller {
     public $restful = true;
 
     public function get_index($id) {
-        $statuses = array('new', 'dtf', 'uv', 'applying', 'printer', 'consumables', 'payment', 'shipment');
+        $statuses = array('new', 'dtf', 'combined', 'uv', 'applying', 'printer', 'consumables', 'shipment');
 
         $client = Client::where('chat_id', '=', $id)->first(array('name', 'chat_id', 'chat_type', 'current_status', 'updated_at'));
         

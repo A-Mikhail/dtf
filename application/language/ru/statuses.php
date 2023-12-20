@@ -10,5 +10,6 @@ return array(
     'printer'       => 'Принтеры',
     'consumables'   => 'Расходники',
     'success'       => 'Завершён',
-    'reject'        => 'Забракован'
+    'reject'        => 'Забракован',
+    'combined'      => 'Комбинированный'
 );

@@ -6,12 +6,12 @@ class Kanban_Controller extends Base_Controller {
     public function get_index() {
         $statuses = array(
             'new' => 'primary', 
-            'dtf' => 'dark', 
+            'dtf' => 'info',
+            'combined' => 'dark',
             'uv' => 'dark', 
             'applying' => 'dark', 
-            'printer' => 'dark',
-            'consumables' => 'dark',
-            'payment' => 'warning', 
+            'printer' => 'secondary',
+            'consumables' => 'danger',
             'shipment' => 'success');
 
         $clients = DB::query("select distinct clients.name, clients.chat_id, clients.current_status, clients.created_at, 

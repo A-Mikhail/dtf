@@ -87,11 +87,12 @@ class Client extends Eloquent {
 			'printer'       => 'Принтеры',
 			'consumables'   => 'Расходники',
 			'success'       => 'Завершён',
-			'reject'        => 'Забракован'
+			'reject'        => 'Забракован',
+			'combined'      => 'Комбинированный'
 		);
 
 		if (array_key_exists($status, $status_arr)) {
-			$to_return = $status_arr[$status];
+			$to_return = __("statuses.$status");
 		} else {
 			$to_return = 'Неизвестный';
 		}
