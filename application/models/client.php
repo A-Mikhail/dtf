@@ -31,7 +31,7 @@ class Client extends Eloquent {
 		}
 
 		$setPrice = array(
-			'author' =>  $user,
+			'author' =>  $user->id,
 			'chat_id' => $this->chat_id,
 			'price' => $price,
 			'created_at' => new DateTime()
