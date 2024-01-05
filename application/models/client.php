@@ -24,8 +24,14 @@ class Client extends Eloquent {
 	}
 
 	public function price($price) {
+		if ($bot) {
+			$user = User::where('id', '=', 3)->first();
+		} else {
+			$user = Auth::user();
+		}
+
 		$setPrice = array(
-			'author' =>  Auth::user()->id,
+			'author' =>  $user,
 			'chat_id' => $this->chat_id,
 			'price' => $price,
 			'created_at' => new DateTime()
