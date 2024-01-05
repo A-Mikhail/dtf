@@ -23,7 +23,7 @@ class Client extends Eloquent {
 		return true;
 	}
 
-	public function price($price) {
+	public function price($price, $bot = false) {
 		if ($bot) {
 			$user = User::where('id', '=', 3)->first();
 		} else {

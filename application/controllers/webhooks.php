@@ -115,7 +115,7 @@ class Webhooks_Controller extends Base_Controller {
         } else {
             if ($client->current_status == 'reject' || $client->current_status == 'success') {
                 $client->current_status = 'new';
-                $client->price(0);
+                $client->price(0, true);
                 // Message from bot, set to true
                 $client->log('status', 'Новое сообщение. Возвращаем статус на ' . $client->rustatus(), true);
                 $client->save();     
