@@ -39,7 +39,12 @@ class Client extends Eloquent {
 
 		DB::table('deals')->insert($setPrice);
 
-		$this->log('price', 'Цена изменена на ' . number_format($price,0,'.',' ') . ' ₸');
+		if ($bot) {
+			$this->log('price', 'Цена изменена на ' . number_format($price,0,'.',' ') . ' ₸', true);
+		} else {
+			$this->log('price', 'Цена изменена на ' . number_format($price,0,'.',' ') . ' ₸');
+		}
+
 
 		return true;
 	}
