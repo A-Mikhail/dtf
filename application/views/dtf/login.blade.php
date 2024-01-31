@@ -21,13 +21,11 @@
                 <h1 class="h3 mb-3 fw-normal">Пожалуйста, авторизуйтесь</h1>
 
                 <div class="form-floating">
-                    <input type="email" class="form-control" name="email" id="floatingInput"
-                        placeholder="name@example.com">
-                    <label for="floatingInput">Email адрес</label>
+                    <input type="text" class="form-control" name="email" id="floatingInput" placeholder="name">
+                    <label for="floatingInput">Логин</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" name="password" id="floatingPassword"
-                        placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Пароль</label>
                 </div>
 
