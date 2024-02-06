@@ -33,7 +33,7 @@ class Table_Controller extends Base_Controller {
             from clients 
             inner join messages on clients.chat_id = messages.chat_id
             left outer join deals on clients.chat_id = deals.chat_id
-            where clients.created_at = '".Input::get('date',$year.'-'.$month.'-01')."'
+            where YEAR(clients.created_at) = '".Input::get('date',$year)."' and MONTH(clients.created_at) = '".Input::get('date',$month)."'
             GROUP BY clients.chat_id, clients.name, deals.chat_id, clients.current_status
             ORDER BY new_update DESC;");
 
