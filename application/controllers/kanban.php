@@ -1,18 +1,39 @@
 <?php
 
-class Kanban_Controller extends Base_Controller {
+class Kanban_Controller extends Base_Controller
+{
     public $restful = true;
 
     public function get_index() {
+        if (Input::has('reporting_date')) {
+            list($month, $year) = explode('-', Input::get('reporting_date'));
+        } else {
+            $month = date('m');
+            $year = date('Y');
+        }
+
+        $minopermonth = Client::min('created_at');
+        $minopermonth = new DateTime($minopermonth);
+        $from = new DateTime();
+        $to = $minopermonth;
+        $rumonths = array('', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь');
+        $months = array();
+
+        while ($from > $to) {
+            $months[$from->format('m-Y')] = $rumonths[$from->format('n')] . ', ' . $from->format('Y');
+            $from->modify('-1 month');
+        }
+
         $statuses = array(
-            'new' => 'primary', 
+            'new' => 'primary',
             'dtf' => 'info',
             'combined' => 'warning',
-            'uv' => 'info', 
-            'applying' => 'info', 
+            'uv' => 'info',
+            'applying' => 'info',
             'printer' => 'secondary',
             'consumables' => 'danger',
-            'shipment' => 'success');
+            'shipment' => 'success'
+        );
 
         // ---------------------------------
         // case when MAX(deals.price <= 0) = 0 then MAX(deals.price) end AS last_price
@@ -24,26 +45,28 @@ class Kanban_Controller extends Base_Controller {
             from clients 
             inner join messages on clients.chat_id = messages.chat_id
             left outer join deals on clients.chat_id = deals.chat_id
-            where current_status not in ('success', 'reject') 
+            where current_status not in ('success', 'reject')
+            where created_at = '".Input::get('date',$year.'-'.$month.'-01')."'
             GROUP BY clients.chat_id, clients.name, deals.chat_id, clients.current_status
             ORDER BY new_update DESC;");
 
         return View::make("dtf.kanban")
             ->with('clients', $clients)
-            ->with('statuses', $statuses);
+            ->with('statuses', $statuses)
+            ->with('months',$months);
     }
 
     public function post_changestatus() {
         // Write to the log
         $chatId = Input::get('chatId');
         $client = Client::where('chat_id', '=', $chatId)->first();
-        
+
         if (!is_null($client)) {
             $client->current_status = Input::get('status');
             $client->log('status', 'Статус изменён на ' . $client->rustatus());
-            $client->save();         
+            $client->save();
 
-            return Response::json(array('status'=>'ok', 'message'=>'status successfully changed', 'code'=>'0200'));
+            return Response::json(array('status' => 'ok', 'message' => 'status successfully changed', 'code' => '0200'));
         } else {
             return Response::json('Client is empty', 400);
         }
