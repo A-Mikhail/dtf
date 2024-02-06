@@ -24,20 +24,6 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="form-group mg-b-10-force">
-        <select class="form-control select2" id="reporting_date" data-placeholder="Выберите месяц">
-            <?php $rucurmonth='Текущий месяц'; ?>
-            @foreach($months as $k => $v)
-                @if(Input::get('reporting_date') == $k)
-                <option value="{{$k}}" selected="">{{$v}}</option>
-                <?php $rucurmonth=$v; ?>
-                @else
-                <option value="{{$k}}">{{$v}}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>	
-
     <div class="row mt-4">
         <div class="col-12">
             <div id="kanban">
