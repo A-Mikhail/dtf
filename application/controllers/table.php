@@ -4,6 +4,25 @@ class Table_Controller extends Base_Controller {
     public $restful = true;
 
     public function get_index() {
+        if (Input::has('reporting_date')) {
+            list($month, $year) = explode('-', Input::get('reporting_date'));
+        } else {
+            $month = date('m');
+            $year = date('Y');
+        }
+
+        $minopermonth = Client::min('created_at');
+        $minopermonth = new DateTime($minopermonth);
+        $from = new DateTime();
+        $to = $minopermonth;
+        $rumonths = array('', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь');
+        $months = array();
+
+        while ($from > $to) {
+            $months[$from->format('m-Y')] = $rumonths[$from->format('n')] . ', ' . $from->format('Y');
+            $from->modify('-1 month');
+        }
+
         // ---------------------------------
         // case when MAX(deals.price <= 0) = 0 then MAX(deals.price) end AS last_price
         // Return price that is zero or less
@@ -14,6 +33,7 @@ class Table_Controller extends Base_Controller {
             from clients 
             inner join messages on clients.chat_id = messages.chat_id
             left outer join deals on clients.chat_id = deals.chat_id
+            where clients.created_at = '".Input::get('date',$year.'-'.$month.'-01')."'
             GROUP BY clients.chat_id, clients.name, deals.chat_id, clients.current_status
             ORDER BY new_update DESC;");
 
@@ -31,6 +51,7 @@ class Table_Controller extends Base_Controller {
         
         return View::make("dtf.table")
             ->with('clients', $clients)
-            ->with('uniqueStatuses', $clientstat_uniq);
+            ->with('uniqueStatuses', $clientstat_uniq)
+            ->with('months',$months);
     }
 }

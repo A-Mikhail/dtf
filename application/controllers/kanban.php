@@ -5,25 +5,6 @@ class Kanban_Controller extends Base_Controller
     public $restful = true;
 
     public function get_index() {
-        if (Input::has('reporting_date')) {
-            list($month, $year) = explode('-', Input::get('reporting_date'));
-        } else {
-            $month = date('m');
-            $year = date('Y');
-        }
-
-        $minopermonth = Client::min('created_at');
-        $minopermonth = new DateTime($minopermonth);
-        $from = new DateTime();
-        $to = $minopermonth;
-        $rumonths = array('', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь');
-        $months = array();
-
-        while ($from > $to) {
-            $months[$from->format('m-Y')] = $rumonths[$from->format('n')] . ', ' . $from->format('Y');
-            $from->modify('-1 month');
-        }
-
         $statuses = array(
             'new' => 'primary',
             'dtf' => 'info',
@@ -46,14 +27,12 @@ class Kanban_Controller extends Base_Controller
             inner join messages on clients.chat_id = messages.chat_id
             left outer join deals on clients.chat_id = deals.chat_id
             where current_status not in ('success', 'reject')
-            where created_at = '".Input::get('date',$year.'-'.$month.'-01')."'
             GROUP BY clients.chat_id, clients.name, deals.chat_id, clients.current_status
             ORDER BY new_update DESC;");
 
         return View::make("dtf.kanban")
             ->with('clients', $clients)
-            ->with('statuses', $statuses)
-            ->with('months',$months);
+            ->with('statuses', $statuses);
     }
 
     public function post_changestatus() {

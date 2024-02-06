@@ -3,6 +3,7 @@
 @section('csstop')
 <link rel="stylesheet" href="/libs/datatable/jquery.dataTables.min.css">
 <link rel="stylesheet" href="/libs/datatable/buttons.dataTables.min.css">
+<link rel='stylesheet' href='/libs/select2/select2.min.css'>
 @endsection
 
 @section('content')
@@ -56,6 +57,7 @@
 <script src="/libs/datatable/pdfmake.min.js"></script>
 <script src="/libs/datatable/vfs_fonts.js"></script>
 <script src="/libs/datatable/buttons.html5.min.js"></script>
+<script src="/libs/select2/select2.min.js"></script>
 
 <script>
 	$.fn.dataTable.ext.search.push(

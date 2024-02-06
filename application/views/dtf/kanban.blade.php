@@ -2,7 +2,6 @@
 
 @section('csstop')
 <link rel='stylesheet' type='text/css' media='screen' href='/libs/jkanban/jkanban.min.css'>
-<link rel='stylesheet' type='text/css' media='screen' href='/libs/select2/select2.min.css'>
 
 <style>
     .kanban-board .kanban-drag {
@@ -61,7 +60,6 @@
 
 @section('js')
 <script src='/libs/jkanban/jkanban.min.js'></script>
-<script src="/libs/select2/select2.min.js"></script>
 
 <script>
     new jKanban({
