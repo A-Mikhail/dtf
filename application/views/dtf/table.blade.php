@@ -125,5 +125,15 @@
             'pdfHtml5'
         ]
     });
+
+	$('.select2').select2({
+		minimumResultsForSearch: Infinity
+	});
+
+	$('#reporting_date').on('select2:select', function (e) {
+		var data = e.params.data;
+		
+		location.replace("?reporting_date=" + data.id);
+	});
 </script>
 @endsection
