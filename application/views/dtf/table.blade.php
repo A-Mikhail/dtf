@@ -9,23 +9,23 @@
 @section('content')
 <div class="container">
     <div class="px-4 py-5 my-5">
-        <div class="row">
-            <div class="form-group mg-b-10-force">
-                <select class="form-control select2" id="reporting_date" data-placeholder="Выберите месяц">
-                    <?php $rucurmonth='Текущий месяц'; ?>
-                    @foreach($months as $k => $v)
-                        @if(Input::get('reporting_date') == $k)
-                        <option value="{{$k}}" selected="">{{$v}}</option>
-                        <?php $rucurmonth=$v; ?>
-                        @else
-                        <option value="{{$k}}">{{$v}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>	
-        </div>
+        <div class="row justify-content-between">
+            <div class="col-3 pb-4">
+                <div class="form-group mg-b-10-force">
+                    <select class="form-control select2" id="reporting_date" data-placeholder="Выберите месяц">
+                        <?php $rucurmonth='Текущий месяц'; ?>
+                        @foreach($months as $k => $v)
+                            @if(Input::get('reporting_date') == $k)
+                            <option value="{{$k}}" selected="">{{$v}}</option>
+                            <?php $rucurmonth=$v; ?>
+                            @else
+                            <option value="{{$k}}">{{$v}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>	
+            </div>
 
-        <div class="row justify-content-end">
             <div class="col-3 pb-4">
                 <select class="form-control dtable-filter" id="status_filter" data-placeholder="Все статусы">
                     <option value="">Все статусы</option>
