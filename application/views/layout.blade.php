@@ -80,6 +80,8 @@
         @yield('content')
     </div>
 
+    <input type="hidden" name="userid" value="{{Auth::user()->id}}">
+
     <script type="text/javascript" src='/libs/jquery/jquery-3.7.1.min.js'></script>
     <script type="text/javascript" src='/libs/popper.min.js'></script>
     <script type="text/javascript" src='/libs/bootstrap/js/bootstrap.bundle.min.js'></script>
@@ -87,7 +89,7 @@
     <script type="text/javascript" src="/libs/mdb/js/mdb.umd.min.js"></script>
     <script type="text/javascript" src="/libs/favico-0.3.10.min.js"></script>
 
-    <script type="text/javascript" src='/main.js?v=0.0.2'></script>
+    <script type="text/javascript" src='/main.js?v=0.0.3'></script>
 
     @yield('js')
 </body>

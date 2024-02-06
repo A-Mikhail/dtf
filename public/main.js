@@ -125,7 +125,7 @@ class Badger {
 const apiKey = '38bf7b77d71c43dbaa07b9ed936af840';
 
 // id менеджера из вашей CRM
-const userId = '1';
+const userId = $('input[name="userid"]').val();
 
 // Опции подключения к сервису нотификаций
 const connectOptions = {
