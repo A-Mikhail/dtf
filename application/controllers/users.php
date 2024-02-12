@@ -69,6 +69,10 @@ class Users_Controller extends Base_Controller {
     }
 
     public function get_users() {
+        if (Auth::user()->alevel != 1) {
+            return Response::error(403);
+        }
+
         $users = User::all();
  
         $statuses = array(1 => 'Активный', 0 => 'Заблокирован');
@@ -77,7 +81,7 @@ class Users_Controller extends Base_Controller {
         foreach ($users as $user){
             $user->active = $statuses[$user->active];
             $user->alevel = $alevels[$user->alevel];
-            $user->created_at = date('d-m-Y', strtotime($user->created_at));
+            $user->created_at = date('d.m.Y', strtotime($user->created_at));
        
         }
 

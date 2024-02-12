@@ -40,7 +40,7 @@
                     <td>{{$u->active}}</td>
                     <td>{{$u->alevel}}</td>
                     <td>{{$u->created_at}}</td>
-                    <td>Действия</td>
+                    <td></td>
                 </tr>
                 @endforeach
             </tbody>
