@@ -82,10 +82,43 @@ class Users_Controller extends Base_Controller {
             $user->active = $statuses[$user->active];
             $user->alevel = $alevels[$user->alevel];
             $user->created_at = date('d.m.Y', strtotime($user->created_at));
-       
         }
 
         return View::make('dtf.users')
             ->with('users', $users);
+    }
+
+    public function post_block($id) {
+        if (Auth::user()->alevel != 1) {
+            return Response::error(403);
+        }
+
+        $user = User::find($id);
+
+        if (is_null($user)) {
+            return Response::json(array('status' => 'not found', 'message' => 'User not found'));
+        }
+
+        $user->active = 0;
+        $user->save();
+
+        return Response::json(array('status' => 'success', 'message' => 'User is blocked'));
+    }
+
+    public function post_unblock($id) {
+        if (Auth::user()->alevel != 1) {
+            return Response::error(403);
+        }
+
+        $user = User::find($id);
+
+        if (is_null($user)) {
+            return Response::json(array('status' => 'not found', 'message' => 'User not found'));
+        }
+
+        $user->active = 1;
+        $user->save();
+
+        return Response::json(array('status' => 'success', 'message' => 'User is unblocked'));
     }
 }

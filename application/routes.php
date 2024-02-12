@@ -28,6 +28,8 @@ Route::group(array('before' => 'auth'), function () {
 	Route::post('/register', array('uses' => 'users@register'));
 
 	Route::get('/users', array('uses' => 'users@users'));
+	Route::post('/user/block/(:num)', array('uses' => 'users@block'));
+	Route::post('/user/unblock/(:num)', array('uses' => 'users@unblock'));
 });
 
 /*

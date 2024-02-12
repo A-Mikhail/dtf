@@ -40,7 +40,11 @@
                     <td>{{$u->active}}</td>
                     <td>{{$u->alevel}}</td>
                     <td>{{$u->created_at}}</td>
-                    <td></td>
+                    @if($u->active == 'Активный')
+                    <td><button type="button" class="btn btn-danger btn-block-user" data-id="{{$u->id}}" data-mdb-ripple-init>Заблокировать</button></td>
+                    @else
+                    <td><button type="button" class="btn btn-success btn-unblock-user" data-id="{{$u->id}}" data-mdb-ripple-init>Разблокировать</button></td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
@@ -72,6 +76,58 @@
 
     $("#status_filter").on('change keyup click',function(){
         $('#clientTable').DataTable().draw();
+    });
+
+    $('.btn-block-user').on('click', function (){
+        let id = $(this).data('id');
+        let that = this;
+
+        $.ajax(
+            url: `/user/block/${id}`,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.status == 'success') {
+                    $('.toast-body').text('Пользователь заблокирован');
+                    toastBootstrap.show();
+
+                    $(that).removeClass('btn-danger btn-block-user').addClass('btn-success btn-unblock-user');
+                } else if (data.status == 'not found') {
+                    $('.toast-body').text('Пользователь не найден');
+                    toastBootstrap.show();
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка во время блокировки пользователя');
+                toastBootstrap.show();
+            }
+        );
+    });
+    
+    $('.btn-unblock-user').on('click', function (){
+        let id = $(this).data('id');
+        let that = this;
+
+        $.ajax(
+            url: `/user/unblock/${id}`,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.status == 'success') {
+                    $('.toast-body').text('Пользователь разблокирован');
+                    toastBootstrap.show();
+
+                    $(that).removeClass('btn-success btn-unblock-user').addClass('btn-danger btn-block-user');
+                } else if (data.status == 'not found') {
+                    $('.toast-body').text('Пользователь не найден');
+                    toastBootstrap.show();
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка во время блокировки пользователя');
+                toastBootstrap.show();
+            }
+        );
     });
 
     let table = new DataTable('#clientTable', {
