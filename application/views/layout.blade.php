@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 
 <head>
     <meta charset='utf-8'>
@@ -76,7 +76,7 @@
                             <li><a class="dropdown-item" href="/allusers">Все пользователи</a></li>
                             <li><hr class="dropdown-divider"></li>
                             @endif
-                            
+
                             <li><a class="dropdown-item" href="/logout">Выход</a></li>
                         </ul>
                     </div>
