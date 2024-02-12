@@ -30,7 +30,9 @@ class Dashboard_Controller extends Base_Controller {
             ->group_by('current_status')
             ->group_by('chdate')
             ->order_by('cnt', 'desc')
-            ->get(array('current_status as cnt', 'current_status', 'date(created_at) as chdate'))->count('cnt');
+            ->get(array('current_status as cnt', 'current_status', 'created_at as chdate'))
+            ->count('cnt')
+            ->date('chdate');
 
 
         var_dump($clients);
