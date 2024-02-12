@@ -40,7 +40,7 @@
                     </select>
                 </div>
         
-                <button class="btn btn-success w-100 py-2 mt-3 btn-create-user" type="submit">Создать пользователя</button>
+                <button class="btn btn-success w-100 py-2 mt-3 btn-create-user">Создать пользователя</button>
             </form>
         </div>
     </div>
@@ -51,7 +51,9 @@
 <script>
     const toastBootstrap = new bootstrap.Toast($('#toast')[0]);
 
-    $('.btn-create-user').on('click', function () {
+    $('.btn-create-user').on('click', function (e) {
+        e.preventDefault();
+        
         $.ajax({
             url: '/register',
             method: 'POST',
@@ -75,8 +77,13 @@
 
     $("input[name='repeatpassword']").on('blur', function () {       
         if ($("input[name='password']").val() !== $("input[name='repeatpassword']").val()) {
+
+            $('.btn-create-user').attr('disabled', true);
+
             $('.toast-body').text('Пароль не совпадает');
             toastBootstrap.show();
+        } else {
+            $('.btn-create-user').attr('disabled', false);
         }
     });
 </script>
