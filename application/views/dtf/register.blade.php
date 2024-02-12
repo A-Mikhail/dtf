@@ -56,7 +56,7 @@
             url: '/register',
             method: 'POST',
             dataType: 'json',
-            data: $('form').serialize()
+            data: $('form').serialize(),
             success: function (data) {
                 if (data.status == 'success') {
                     $('.toast-body').text(`Пользователь ${$("input[name='fio']").val()} создан`);
@@ -71,6 +71,13 @@
                 toastBootstrap.show();
             }
         });
+    });
+
+    $("input[name='repeatpassword']").on('blur', function () {       
+        if ($("input[name='password']").val() !== $("input[name='repeatpassword']").val()) {
+            $('.toast-body').text('Пароль не совпадает');
+            toastBootstrap.show();
+        }
     });
 </script>
 @endsection
