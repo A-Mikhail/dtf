@@ -41,9 +41,9 @@
                     <td>{{$u->alevel}}</td>
                     <td>{{$u->created_at}}</td>
                     @if($u->active == 'Активный')
-                    <td><button type="button" class="btn btn-danger btn-block-user" data-id="{{$u->id}}" data-mdb-ripple-init>Заблокировать</button></td>
+                    <td><button type="button" class="btn btn-sm btn-danger btn-block-user" data-id="{{$u->id}}" data-mdb-ripple-init>Заблокировать</button></td>
                     @else
-                    <td><button type="button" class="btn btn-success btn-unblock-user" data-id="{{$u->id}}" data-mdb-ripple-init>Разблокировать</button></td>
+                    <td><button type="button" class="btn btn-sm btn-success btn-unblock-user" data-id="{{$u->id}}" data-mdb-ripple-init>Разблокировать</button></td>
                     @endif
                 </tr>
                 @endforeach
@@ -92,6 +92,7 @@
                     toastBootstrap.show();
 
                     $(that).removeClass('btn-danger btn-block-user').addClass('btn-success btn-unblock-user');
+                    $(that).text('Разблокировать');
                 } else if (data.status == 'not found') {
                     $('.toast-body').text('Пользователь не найден');
                     toastBootstrap.show();
@@ -118,6 +119,7 @@
                     toastBootstrap.show();
 
                     $(that).removeClass('btn-success btn-unblock-user').addClass('btn-danger btn-block-user');
+                    $(that).text('Заблокировать');
                 } else if (data.status == 'not found') {
                     $('.toast-body').text('Пользователь не найден');
                     toastBootstrap.show();

@@ -111,7 +111,7 @@
     <script type="text/javascript" src="/libs/mdb/js/mdb.umd.min.js"></script>
     <script type="text/javascript" src="/libs/favico-0.3.10.min.js"></script>
 
-    <script type="text/javascript" src='/main.js?v=0.0.3'></script>
+    <script type="text/javascript" src='/main.js?v=0.0.4'></script>
 
     @yield('js')
 </body>
