@@ -41,7 +41,6 @@ class Dashboard_Controller extends Base_Controller {
 
         // By manager
 
-        return View::make('dtf.dashboardtasks')
-            ->with();
+        return View::make('dtf.dashboardtasks');
     }
 }
