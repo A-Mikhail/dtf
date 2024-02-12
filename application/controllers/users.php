@@ -77,7 +77,8 @@ class Users_Controller extends Base_Controller {
         foreach ($users as $user){
             $user->active = $statuses[$user->active];
             $user->alevel = $alevels[$user->alevel];
-            $user->created_at = $user->created_at->format('d-m-Y');            
+            $user->created_at = date('d-m-Y', strtotime($user->created_at));
+       
         }
 
         return View::make('dtf.users')
