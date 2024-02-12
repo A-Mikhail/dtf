@@ -24,7 +24,7 @@
 <body>
     <div class="container py-3">
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-            <h1 class="display-4 fw-normal text-body-emphasis">403</h1>
+            <h1 class="display-4 fw-normal text-body-emphasis">404</h1>
             <p class="fs-5 text-body-secondary">Ошибка 404 - Не найдена страница.</p> 
             <p class="fs-5 text-body-secondary">Страница которую вы искали не существует 😥, провьрте правильность ввода и повторите вновь.</p>
         </div>
