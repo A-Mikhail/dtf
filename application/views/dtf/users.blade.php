@@ -82,7 +82,7 @@
         let id = $(this).data('id');
         let that = this;
 
-        $.ajax(
+        $.ajax({
             url: `/user/block/${id}`,
             method: 'POST',
             dataType: 'json',
@@ -101,14 +101,14 @@
                 $('.toast-body').text('Ошибка во время блокировки пользователя');
                 toastBootstrap.show();
             }
-        );
+        });
     });
     
     $('.btn-unblock-user').on('click', function (){
         let id = $(this).data('id');
         let that = this;
 
-        $.ajax(
+        $.ajax({
             url: `/user/unblock/${id}`,
             method: 'POST',
             dataType: 'json',
@@ -127,7 +127,7 @@
                 $('.toast-body').text('Ошибка во время блокировки пользователя');
                 toastBootstrap.show();
             }
-        );
+        });
     });
 
     let table = new DataTable('#clientTable', {
