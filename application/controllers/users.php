@@ -28,6 +28,10 @@ class Users_Controller extends Base_Controller {
     }
 
     public function get_register() {
+        if (Auth::user()->alevel != 1) {
+            return Response::error(403);
+        }
+
         return View::make('dtf.register');
     }
 
