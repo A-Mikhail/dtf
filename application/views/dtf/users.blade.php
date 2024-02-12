@@ -35,11 +35,11 @@
                 @foreach($users as $u)
                 <tr>
                     <td>{{$u->id}}</td>
-                    <td>{{$c->email}}</td>
-                    <td>{{$c->username}}</td>
-                    <td>{{$c->active}}</td>
-                    <td>{{$c->alevel}}</td>
-                    <td>{{$c->created_at}}</td>
+                    <td>{{$u->email}}</td>
+                    <td>{{$u->username}}</td>
+                    <td>{{$u->active}}</td>
+                    <td>{{$u->alevel}}</td>
+                    <td>{{$u->created_at}}</td>
                     <td>Действия</td>
                 </tr>
                 @endforeach
