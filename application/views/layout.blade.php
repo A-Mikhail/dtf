@@ -69,16 +69,12 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {{Auth::user()->username}}
                         </a>
+         
                         <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="/register">Создать пользователя</a></li>
-                        </ul>
-                        <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="/allusers">Все пользователи</a></li>
-                        </ul>
-                        
-                        <li><hr class="dropdown-divider"></li>
+                            <li><hr class="dropdown-divider"></li>
 
-                        <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="/logout">Выход</a></li>
                         </ul>
                     </div>
