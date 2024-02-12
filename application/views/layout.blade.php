@@ -73,7 +73,7 @@
                         <ul class="dropdown-menu text-small">
                             @if(Auth::user()->alevel == 1)
                             <li><a class="dropdown-item" href="/register">Создать пользователя</a></li>
-                            <li><a class="dropdown-item" href="/allusers">Все пользователи</a></li>
+                            <li><a class="dropdown-item" href="/users">Все пользователи</a></li>
                             <li><hr class="dropdown-divider"></li>
                             @endif
 

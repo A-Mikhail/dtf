@@ -1,4 +1,5 @@
 <?php
+use Laravel\View;
 
 class Users_Controller extends Base_Controller {
     public $restful = true;
@@ -24,6 +25,14 @@ class Users_Controller extends Base_Controller {
             return Response::error(403);
         } else {
             return Redirect::to_route('login')->with('error', 'Вы ввели неверную комбинацию логин/пароль!');
+        }
+    }
+
+    public function get_logout() {
+        if (Auth::check()) {
+            Auth::logout();
+
+            return Redirect::to_route('login');
         }
     }
 
@@ -59,11 +68,19 @@ class Users_Controller extends Base_Controller {
         return Response::json(array('status' => 'success', 'message' => 'User is registered'));
     }
 
-    public function get_logout() {
-        if (Auth::check()) {
-            Auth::logout();
+    public function get_users() {
+        $users = User::all();
+ 
+        $statuses = array(1 => 'Активный', 0 => 'Заблокирован');
+        $alevels = array(1 => 'Администратор', 2 => 'Менеджер');
 
-            return Redirect::to_route('login');
+        foreach ($users as $user){
+            $user->active = $statuses[$user->active];
+            $user->alevel = $alevels[$user->alevel];
+            $user->created_at = $user->created_at->format('d-m-Y');            
         }
+
+        return View::make('dtf.users')
+            ->with('users', $users);
     }
 }

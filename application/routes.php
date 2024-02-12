@@ -26,7 +26,7 @@ Route::group(array('before' => 'auth'), function () {
 
 	Route::get('/register', array('uses' => 'users@register'));
 	Route::post('/register', array('uses' => 'users@register'));
-	
+
 	Route::get('/users', array('uses' => 'users@users'));
 });
 
