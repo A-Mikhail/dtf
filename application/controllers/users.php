@@ -41,7 +41,7 @@ class Users_Controller extends Base_Controller {
         $findUser = User::where('email', '=', $username)->first();
 
         if(!is_null($findUser)){
-            return Response::json(array('status' => 'fail', 'message' => 'User already exists'));
+            return Response::json(array('status' => 'exist', 'message' => 'User already exists'));
         }
 
         $user = new User();
@@ -51,8 +51,8 @@ class Users_Controller extends Base_Controller {
         $user->active = 1;
         $user->alevel = intval($alevel);
         $user->save();
-        
-        return Response::json(array('status' => 'successs', 'message' => 'User is registered'));
+
+        return Response::json(array('status' => 'success', 'message' => 'User is registered'));
     }
 
     public function get_logout() {

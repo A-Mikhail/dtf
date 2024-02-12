@@ -103,27 +103,11 @@
     </div>
 </div>
 
-<div class="toast-container p-3 top-0 end-0">
-    <div class="toast fade" id="toast">
-        <div role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Оповещение</strong>
-                <small class="text-body-secondary">Только что</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-
-            <div class="toast-body">
-            </div>
-        </div>
-    </div>
-</div>
-
 <input type="hidden" name="chat_id" value="{{$client->chat_id}}">
 @endsection
 
 @section('js')
 <script>
-    const toastBootstrap = new bootstrap.Toast($('#toast')[0]);
     const chatId = $('input[name="chat_id"]').val();
 
     $('.btn-status-success').off('click').on('click', function () {

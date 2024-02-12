@@ -135,6 +135,8 @@ const connectOptions = {
 
 const title = document.title;
 
+const toastBootstrap = new bootstrap.Toast($('#toast')[0]);
+
 // Получаем url для подключения к сервису нотификаций
 fetch(`https://integrations.wazzup24.com/counters/ws_host/api_v3/${apiKey}`)
 	.then((response) => response.json())
