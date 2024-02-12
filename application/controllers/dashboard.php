@@ -26,7 +26,7 @@ class Dashboard_Controller extends Base_Controller {
 
         // select count(current_status) as cnt, current_status, date(created_at) as times from clients where created_at >= '2024-02-10' group by current_status, times order by cnt desc limit 100;
 
-		$clients = Client::where('created_at', '>=', $from_date)->where('created_at', '<=', $to_date)->group_by(array('current_status', 'chdate'))->order_by('cnt', 'desc')->get(array('count(current_status) as cnt', 'current_status', 'date(created_at) as chdate'));
+		$clients = Client::where('created_at', '>=', $from_date)->where('created_at', '<=', $to_date)->group_by(array('current_status', 'chdate'))->orsder_by('cnt', 'desc')->get(array('count(current_status) as cnt', 'current_status', 'date(created_at) as chdate'));
 
 
         var_dump($clients);
