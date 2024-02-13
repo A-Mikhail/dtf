@@ -97,21 +97,6 @@
 <script>
     $('.fc-datepicker').mask('99.99.9999');
 
-    $.fn.dataTable.ext.search.push(
-		function( settings, data, dataIndex ) {
-			if (data[2]==$('#status_filter').val()){
-				return true;
-			}else if($('#status_filter').val()==''){
-				return true;
-			}
-			return false;
-		}
-	);
-
-    $("#status_filter").on('change keyup click',function(){
-        $('#clientTable').DataTable().draw();
-    });
-
     let table = new DataTable('#clientTable', {
         responsive: true,
         language: {
