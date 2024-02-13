@@ -74,7 +74,7 @@
             @foreach($statbydate as $sd)
             <tr>
                 <td>
-                    <span class="badge badge-success rounded-pill d-inline">{{__("statuses.$sd.current_status")}}</span>
+                    <span class="badge badge-success rounded-pill d-inline">{{$sd.current_status}}</span>
                 </td>
                 <td>
                     <p class="fw-normal mb-1">{{$sd.cnt}}</p>
