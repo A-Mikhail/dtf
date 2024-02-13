@@ -33,13 +33,27 @@
         <h4 class="pb-2 border-bottom">Статистика c {{date_format(date_create($from), 'd.m.Y')}} по {{date_format(date_create($to), 'd.m.Y')}}</h4>
     
         <div class="row justify-content-end">
-            <div class="col-3 pb-4">
-                <select class="form-control dtable-filter" id="status_filter" data-placeholder="Все статусы">
-                    <option value="">Все статусы</option>
-                    <option value="Активный">Активный</option>
-                    <option value="Заблокирован">Заблокирован</option>
-                </select>
-            </div>
+            <form method="get" action='/dashboard/tasks'>
+				<div class="row">
+					<div class="col-12 col-md-2">
+						<div class="form-group">
+							<input type="text" name="filter_start_date" class="form-control fc-datepicker" placeholder="С"
+                                value="{{Input::get('filter_start_date',date('01.m.Y'))}}" />
+						</div>
+					</div>
+
+					<div class="col-12 col-md-3">
+						<div class="input-group">
+							<input type="text" name="filter_end_date" class="form-control fc-datepicker" placeholder="По" 
+                                value="{{Input::get('filter_end_date',date('t.m.Y'))}}" />
+
+							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
         </div>
 
         <table id="clientTable" class="mx-auto mb-4 display">
@@ -76,14 +90,13 @@
 <script src="/libs/datatable/pdfmake.min.js"></script>
 <script src="/libs/datatable/vfs_fonts.js"></script>
 <script src="/libs/datatable/buttons.html5.min.js"></script>
+
 <script src="/libs/select2/select2.min.js"></script>
+<script src="/libs/jquery-ui/js/jquery-ui.js"></script>
+<script src="/libs/jquery.maskedinput/js/jquery.maskedinput.js"></script>
 
 <script>
-    $('#reporting_date').on('select2:select', function (e) {
-        var data = e.params.data;
-
-        location.replace("?reporting_date=" + data.id);
-    });
+    $('.fc-datepicker').mask('99.99.9999');
 
     $.fn.dataTable.ext.search.push(
 		function( settings, data, dataIndex ) {
