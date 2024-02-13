@@ -92,8 +92,6 @@
 <script src="/libs/datatable/buttons.html5.min.js"></script>
 
 <script src="/libs/select2/select2.min.js"></script>
-<script src="/libs/jquery-ui/js/jquery-ui.js"></script>
-<script src="/libs/jquery.maskedinput/js/jquery.maskedinput.js"></script>
 
 <script>
     $('.fc-datepicker').mask('99.99.9999');
