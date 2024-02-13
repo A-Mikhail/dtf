@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel='stylesheet' type='text/css' media='screen' href='/libs/bootstrap/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="/libs/fontawesome/all.min.css">
+    <link rel="stylesheet" href="/libs/fontawesome/font-awesome.min.css">
     <link rel="stylesheet" href="/libs/mdb/css/mdb.min.css">
 
     <link rel='stylesheet' type='text/css' media='screen' href='/main.css?v=0.0.2'>
