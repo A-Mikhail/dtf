@@ -21,8 +21,8 @@
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">{{$sn->cnt}}</h3>
                     <p>{{__("statuses.$sn->current_status")}}</p>
                 </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
     </div>
     
