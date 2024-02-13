@@ -6,11 +6,11 @@
 
 @section('content')
 <div class="container px-4 py-5">
-    <div class="row">
+    <div class="row pb-4">
         <!-- Статистика за сегодня -->
         <h4 class="pb-2 border-bottom">Статистика за сегодня</h4>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
             @foreach($statbynow as $sn)
             <div class="col d-flex align-items-start">
                 <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
@@ -18,7 +18,7 @@
                 </svg>
 
                 <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">{{$sn->cnt}}</h3>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis text-center">{{$sn->cnt}}</h3>
                     <p>{{__("statuses.$sn->current_status")}}</p>
                 </div>
             </div>
