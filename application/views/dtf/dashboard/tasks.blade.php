@@ -30,8 +30,18 @@
         <!-- Статистика за период -->
         <h4 class="pb-2 border-bottom">Статистика c {{date_format(date_create($from), 'd.m.Y')}} по {{date_format(date_create($to), 'd.m.Y')}}</h4>
     
-        <table class="table align-middle mb-0 bg-white">
-            <thead class="bg-light">
+        <div class="row justify-content-end">
+            <div class="col-3 pb-4">
+                <select class="form-control dtable-filter" id="status_filter" data-placeholder="Все статусы">
+                    <option value="">Все статусы</option>
+                    <option value="Активный">Активный</option>
+                    <option value="Заблокирован">Заблокирован</option>
+                </select>
+            </div>
+        </div>
+
+        <table id="clientTable" class="mx-auto mb-4 display">
+            <thead>
                 <tr>
                     <th>Статус</th>
                     <th>Кол-во</th>
@@ -65,6 +75,57 @@
         var data = e.params.data;
 
         location.replace("?reporting_date=" + data.id);
+    });
+
+    $.fn.dataTable.ext.search.push(
+		function( settings, data, dataIndex ) {
+			if (data[2]==$('#status_filter').val()){
+				return true;
+			}else if($('#status_filter').val()==''){
+				return true;
+			}
+			return false;
+		}
+	);
+
+    $("#status_filter").on('change keyup click',function(){
+        $('#clientTable').DataTable().draw();
+    });
+
+    let table = new DataTable('#clientTable', {
+        responsive: true,
+        language: {
+            sProcessing: "Подождите...",
+            sLengthMenu: "Показать _MENU_ записей",
+            sZeroRecords: "Записи отсутствуют.",
+            sInfo: "Записи с _START_ до _END_ из _TOTAL_ записей",
+            sInfoEmpty: "Записи с 0 до 0 из 0 записей",
+            sInfoFiltered: "(отфильтровано из _MAX_ записей)",
+            sInfoPostFix: "",
+            searchPlaceholder: 'Поиск...',
+            sSearch: "",
+            sUrl: "",
+            oPaginate: {
+                sFirst: "Первая",
+                sPrevious: "<",
+                sNext: ">",
+                sLast: "Последняя"
+            },
+            oAria: {
+                sSortAscending: ": активировать для сортировки столбца по возрастанию",
+                sSortDescending: ": активировать для сортировки столбцов по убыванию"
+            }
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'copyHtml5',
+                text: 'Скопировать'
+            },
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
     });
 </script>
 @endsection
