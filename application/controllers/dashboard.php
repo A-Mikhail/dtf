@@ -24,24 +24,19 @@ class Dashboard_Controller extends Base_Controller {
             $to_date = $now->format('Y-m-t');
         }
 
-        $clients = DB::query("select count(current_status) as cnt, current_status, date(created_at) as times 
+        // For Month by default
+        $statbydate = DB::query("select count(current_status) as cnt, current_status, date(created_at) as times 
             from clients where created_at >= '$from_date'
             and created_at <= '$to_date'
             group by current_status, times 
             order by cnt desc");
-
-        var_dump($clients);
-        die();
-
-        // foreach ($clients as $c) {
-
-        // }
 
         // Total
 
 
         // By manager
 
-        return View::make('dtf.dashboardtasks');
+        return View::make('dtf.dashboardtasks')
+            ->with('statbydate', $statbydate);
     }
 }
