@@ -1,6 +1,8 @@
 @layout('layout')
 
 @section('csstop')
+<link rel="stylesheet" href="/libs/datatable/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/libs/datatable/buttons.dataTables.min.css">
 <link rel='stylesheet' href='/libs/select2/select2.min.css'>
 @endsection
 
@@ -68,6 +70,12 @@
 @endsection
 
 @section('js')
+<script src="/libs/datatable/jquery.dataTables.min.js"></script>
+<script src="/libs/datatable/dataTables.buttons.min.js"></script>
+<script src="/libs/datatable/jszip.min.js"></script>
+<script src="/libs/datatable/pdfmake.min.js"></script>
+<script src="/libs/datatable/vfs_fonts.js"></script>
+<script src="/libs/datatable/buttons.html5.min.js"></script>
 <script src="/libs/select2/select2.min.js"></script>
 
 <script>
