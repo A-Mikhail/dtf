@@ -39,7 +39,7 @@ class Dashboard_Controller extends Base_Controller {
 
         return View::make('dtf.dashboard.tasks')
             ->with('statbydate', $statbydate)
-            ->with('from', $from_date->format('m.d.Y'))
+            ->with('from', $from_date)
             ->with('to', $to_date)
             ->with('statbynow', $statbynow);
     }

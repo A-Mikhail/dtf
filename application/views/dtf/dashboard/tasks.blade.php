@@ -32,7 +32,7 @@
     </table>
     
     <!-- Статистика за период -->
-    <h2 class="pb-2 border-bottom">Статистика c {{$from}} по {{$to}}</h2>
+    <h2 class="pb-2 border-bottom">Статистика c {{date_format(date_create($from), 'd.m.Y')}} по {{date_format(date_create($to), 'd.m.Y')}}</h2>
 
     <table class="table align-middle mb-0 bg-white">
         <thead class="bg-light">
