@@ -24,16 +24,11 @@ class Dashboard_Controller extends Base_Controller {
             $to_date = $now->format('Y-m-t');
         }
 
-        // select count(current_status) as cnt, current_status, date(created_at) as times from clients where created_at >= '2024-02-10' group by current_status, times order by cnt desc limit 100;
-
-		$clients = Client::where('created_at', '>=', $from_date)->where('created_at', '<=', $to_date)
-            ->group_by('current_status')
-            ->group_by('chdate')
-            ->order_by('cnt', 'desc')
-            ->get(array('current_status as cnt', 'current_status', 'created_at as chdate'))
-            ->count('cnt')
-            ->date('chdate');
-
+        $clients = DB::query("select count(current_status) as cnt, current_status, date(created_at) as times 
+            from clients where created_at >= '$from_date'
+            and created_at <= '$to_date'
+            group by current_status, times 
+            order by cnt desc");
 
         var_dump($clients);
         die();
