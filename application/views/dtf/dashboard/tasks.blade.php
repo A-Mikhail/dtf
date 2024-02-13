@@ -99,7 +99,7 @@
 
     let table = new DataTable('#clientTable', {
         responsive: true,
-        order: [[3, 'desc']]
+        order: [[3, 'desc']],
         language: {
             sProcessing: "Подождите...",
             sLengthMenu: "Показать _MENU_ записей",
