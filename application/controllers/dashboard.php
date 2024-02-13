@@ -31,12 +31,16 @@ class Dashboard_Controller extends Base_Controller {
             group by current_status, times 
             order by cnt desc");
 
-        // Total
+        // Today
+        $statbynow = DB::query("select count(current_status) as cnt, current_status, date(created_at) as times 
+            from clients where created_at >= curdate()
+            group by current_status, times 
+            order by cnt desc");
 
-
-        // By manager
-
-        return View::make('dtf.dashboardtasks')
-            ->with('statbydate', $statbydate);
+        return View::make('dtf.dashboard.tasks')
+            ->with('statbydate', $statbydate)
+            ->with('from', $from_date)
+            ->with('to', $to_date)
+            ->with('statbynow', $statbynow);
     }
 }
