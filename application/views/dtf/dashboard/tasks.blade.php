@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container px-4 py-5">
+<div class="container px-4 py-3">
     <div class="row pb-4">
         <!-- Статистика за сегодня -->
         <h4 class="pb-2 border-bottom">Статистика за сегодня</h4>
@@ -32,7 +32,7 @@
         <!-- Статистика за период -->
         <h4 class="pb-2 border-bottom">Статистика c {{date_format(date_create($from), 'd.m.Y')}} по {{date_format(date_create($to), 'd.m.Y')}}</h4>
     
-        <div class="row justify-content-end">
+        <div class="row justify-content-end pb-3">
             <form method="get" action='/dashboard/tasks'>
 				<div class="row">
 					<div class="col-12 col-md-2">
@@ -68,7 +68,7 @@
                 @foreach($statbydate as $sd)
                 <tr>
                     <td>
-                        <span class="badge badge-success rounded-pill d-inline">{{__("statuses.$sd->current_status")}}</span>
+                        <span class="d-inline">{{__("statuses.$sd->current_status")}}</span>
                     </td>
                     <td>
                         <p class="fw-normal mb-1">{{$sd->cnt}}</p>
