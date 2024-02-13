@@ -29,7 +29,7 @@ class Dashboard_Controller extends Base_Controller {
             from clients where created_at >= '$from_date'
             and created_at <= '$to_date'
             group by current_status, times 
-            order by cnt desc");
+            order by times desc");
 
         // Today
         $statbynow = DB::query("select count(current_status) as cnt, current_status, date(created_at) as times 
