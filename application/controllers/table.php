@@ -49,7 +49,7 @@ class Table_Controller extends Base_Controller {
             }   
 
             $client->current_status = $clientClass->rustatus($client);
-            $client->updated_at = date('d.m h:i:s', strtotime($client->updated_at));
+            $client->updated_at = date('d.m H:i:s', strtotime($client->updated_at));
             $client->created_at = date('d.m.Y', strtotime($client->created_at));
         }
         
