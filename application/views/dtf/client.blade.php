@@ -37,44 +37,38 @@
     </div>
 
     <!-- Change statuses and set price -->
-    <div class="row pb-2 mt-4">
-        <div class="col-12 col-md-7">
-            <div class="col-12 col-md-4">
-                <select class="form-control status-select" data-placeholder="Новый статус">
-                    <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
+    <div class="row pb-2 mt-4 justify-content-between">
+        <div class="col-12 col-md-3">
+            <select class="form-control status-select" data-placeholder="Новый статус">
+                <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
 
-                    @foreach($statuses as $s)
-                        @if($s != $client->current_status)
-                            <option value="{{$s}}">{{__("statuses.$s")}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
+                @foreach($statuses as $s)
+                    @if($s != $client->current_status)
+                        <option value="{{$s}}">{{__("statuses.$s")}}</option>
+                    @endif
+                @endforeach
+            </select>
         </div>
 
         <?php 
-            if (in_array($client->current_status, array('uv', 'dtf'))) {
+            if (!in_array($client->current_status, array('uv', 'dtf'))) {
                 $disabled = 'disabled';
             } else {
                 $disabled = '';
             }
         ?>
 
-        <div class="col-12 col-md-4">
-            <div class="card p-2">
-                <div class="input-group">
-                    <input type="number" id="printM" class="form-control" placeholder="Метраж принта" {{$disabled}}>
-                    <button class="btn btn-primary btn-save-printM" {{$disabled}}>Сохранить</button>
-                </div>
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <input type="number" id="printM" class="form-control" placeholder="Метраж принта" {{$disabled}}>
+                <button class="btn btn-primary btn-save-printM" {{$disabled}}>Сохранить</button>
             </div>
         </div>
 
         <div class="col-12 col-md-4">
-            <div class="card p-2">
-                <div class="input-group">
-                    <input type="number" id="price" class="form-control" placeholder="Стоимость">
-                    <button class="btn btn-primary btn-save-price">Сохранить</button>
-                </div>
+            <div class="input-group">
+                <input type="number" id="price" class="form-control" placeholder="Стоимость">
+                <button class="btn btn-primary btn-save-price">Сохранить</button>
             </div>
         </div>
     </div>
