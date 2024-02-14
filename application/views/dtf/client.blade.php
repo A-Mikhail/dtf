@@ -106,7 +106,7 @@
                             <p class="mb-0 opacity-75">{{$cl->comment}}</p>
                             <small class="mb-0 opacity-75">{{$cl->author}}</small>
                         </div>
-                        <small class="opacity-50 text-nowrap">{{date_format(date_create($cl->created_at), 'd.m.Y')}}</small>
+                        <small class="opacity-50 text-nowrap">{{date_format(date_create($cl->created_at), 'd.m.Y H:i:s')}}</small>
                     </div>
                     @endforeach
                 </div>
