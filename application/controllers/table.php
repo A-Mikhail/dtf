@@ -28,7 +28,7 @@ class Table_Controller extends Base_Controller {
         // Return price that is zero or less
         // https://stackoverflow.com/questions/19763806/how-consider-null-as-the-max-date-instead-of-ignoring-it-in-mysql
         // ---------------------------------
-        $clients = DB::query("select distinct clients.id, clients.name, clients.chat_id, clients.current_status, clients.updated_at, 
+        $clients = DB::query("select distinct clients.id, clients.name, clients.chat_id, clients.current_status, clients.updated_at, clients.created_at, 
             MAX(messages.date_time) AS new_update, case when MAX(deals.price <= 0) = 0 then MAX(deals.price) end AS last_price,
             case when MAX(supplies.amount <= 0) = 0 then MAX(supplies.amount) end AS last_supply_m
             from clients 
