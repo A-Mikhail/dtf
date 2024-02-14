@@ -125,6 +125,7 @@
 </div>
 
 <input type="hidden" name="chat_id" value="{{$client->chat_id}}">
+<input type="hidden" name="author" value="{{Auth::user()->username}}">
 @endsection
 
 @section('js')
@@ -137,6 +138,29 @@
 
         $('.btn-save-printM').attr('disabled', state);
         $('#printM').attr('disabled', state);
+    };
+
+    const appendChanges = (type, text) => {
+        let h6 = '';
+        let time = new Date().toLocaleString('Ru-ru');
+        let author = $('input[name="author"]').val();
+
+        if(type == 'status') {
+            h6 = '<h6 class="mb-0 fw-bold">Статус</h6>'
+        } else if(type == 'price') {
+            h6 = '<h6 class="mb-0 fw-bold">Цена</h6>'
+        } else if(type == 'comment') {
+            h6 = '<h6 class="mb-0 fw-bold">Комментарий</h6>'
+        }
+        
+        $(`<div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
+            <div>
+                ${h6}
+                <p class="mb-0 opacity-75">${text}</p>
+                <small class="mb-0 opacity-75">${author}</small>
+            </div>
+            <small class="opacity-50 text-nowrap">${time}</small>
+        </div>`).appendTo('list-group');
     };
 
     $('.btn-status-success').off('click').on('click', function () {
@@ -154,6 +178,8 @@
                     toastBootstrap.show();
 
                     toggleSupply('disable');
+
+                    appendChanges('status', 'Статус изменён на Завершён');
                 }
             },
             error: function () {
@@ -180,6 +206,7 @@
                     toastBootstrap.show();
 
                     toggleSupply('disable');
+                    appendChanges('status', 'Статус изменён на Забракован');
                 }
             },
             error: function () {
@@ -207,6 +234,8 @@
                     $('.toast-body').text('Сумма сохранена');
 
                     toastBootstrap.show();
+
+                    appendChanges('price', `Цена изменена на ${priceVal} ₸`);
                 }
             },
             error: function () {
@@ -236,6 +265,8 @@
                 if (data.status == 'ok') {
                     $('.toast-body').text(`Статус успешно изменён на ${$(".status-select option:selected").text()}`);
                     toastBootstrap.show();
+
+                    appendChanges('status', `Статус изменён на ${$(".status-select option:selected").text()}`);
                 }
             },
             error: function () {
@@ -262,6 +293,7 @@
                     toastBootstrap.show();
 
                     toggleSupply('disable');
+                    appendChanges('status', `Метраж изменён на ${count} м`);
                 }
             },
             error: function () {
@@ -286,6 +318,8 @@
                 if (data.status == 'ok') {
                     $('.toast-body').text('Комментарий сохранён');
                     toastBootstrap.show();
+
+                    appendChanges('comment', $('#textAreaComment').val());
                 }
             },
             error: function () {
