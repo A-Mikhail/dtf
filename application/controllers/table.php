@@ -30,9 +30,11 @@ class Table_Controller extends Base_Controller {
         // ---------------------------------
         $clients = DB::query("select distinct clients.id, clients.name, clients.chat_id, clients.current_status, clients.updated_at, 
             MAX(messages.date_time) AS new_update, case when MAX(deals.price <= 0) = 0 then MAX(deals.price) end AS last_price
+            case when MAX(supplies.amount <= 0) = 0 then MAX(supplies.amount) end AS last_supply_m
             from clients 
             inner join messages on clients.chat_id = messages.chat_id
             left outer join deals on clients.chat_id = deals.chat_id
+            left outer join supplies on clients.chat_id = supplies.chat_id
             where YEAR(clients.created_at) = '".Input::get('date',$year)."' and MONTH(clients.created_at) = '".Input::get('date',$month)."'
             GROUP BY clients.chat_id, clients.name, deals.chat_id, clients.current_status
             ORDER BY new_update DESC;");
@@ -47,6 +49,8 @@ class Table_Controller extends Base_Controller {
             }   
 
             $client->current_status = $clientClass->rustatus($client);
+            $client->updated_at = date('d.m.Y', strtotime($client->updated_at));
+            $client->created_at = date('d.m.Y', strtotime($client->created_at));
         }
         
         return View::make("dtf.table")

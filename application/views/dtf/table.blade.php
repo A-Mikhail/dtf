@@ -45,7 +45,9 @@
                     <th>Имя</th>
                     <th>Статус</th>
                     <th>Цена</th>
+                    <th>Метраж</th>
                     <th>Обновлён</th>
+                    <th>Создан</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,7 +58,9 @@
                     <td>{{$c->name}}</td>
                     <td>{{$c->current_status}}</td>
                     <td>{{$c->last_price}}</td>
+                    <td>{{$c->last_supply_m}}</td>
                     <td>{{$c->updated_at}}</td>
+                    <td>{{$c->created_at}}</td>
                 </tr>
                 @endforeach
             </tbody>
