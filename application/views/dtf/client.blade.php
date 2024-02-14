@@ -81,17 +81,8 @@
 
         <!-- Logs -->
         <div class="col-12 col-md-5 h-100">
-            <div>
-                <div class="form-outline" data-mdb-input-init>
-                    <textarea class="form-control" id="textAreaComment" rows="2"></textarea>
-                    <label class="form-label" for="textAreaComment">Комментарий</label>
-                </div>
-
-                <button class="btn btn-primary btn-save-comment mt-2">Отправить</button>
-            </div>
-
             @if($clientLog)
-            <div class="overflow-y-auto mt-4" style="height: 70%">
+            <div class="overflow-y-auto my-4" style="height: 70%">
                 <div class="list-group">
                     @foreach($clientLog as $cl)
                     <div class="d-flex w-100 justify-content-between list-group-item list-group-item-action gap-3 py-3">
@@ -120,6 +111,15 @@
                 </div>
             </div>
             @endif
+
+            <div>
+                <div class="form-outline" data-mdb-input-init>
+                    <textarea class="form-control" id="textAreaComment" rows="2"></textarea>
+                    <label class="form-label" for="textAreaComment">Комментарий</label>
+                </div>
+
+                <button class="btn btn-info btn-save-comment mt-2 float-end">Отправить</button>
+            </div>
         </div>
     </div>
 </div>
