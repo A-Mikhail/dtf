@@ -81,6 +81,15 @@
 
         <!-- Logs -->
         <div class="col-12 col-md-5 h-100">
+            <div>
+                <div class="form-outline" data-mdb-input-init>
+                    <textarea class="form-control" id="textAreaComment" rows="4"></textarea>
+                    <label class="form-label" for="textAreaComment">Комментарий</label>
+                </div>
+
+                <button class="btn btn-primary btn-save-comment">Сохранить</button>
+            </div>
+
             @if($clientLog)
             <div class="overflow-y-auto mt-4" style="height: 70%">
                 <div class="list-group">
