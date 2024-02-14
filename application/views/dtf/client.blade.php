@@ -39,7 +39,7 @@
     <!-- Change statuses and set price -->
     <div class="row pb-2 mt-4">
         <div class="col-12 col-md-7">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
                 <select class="form-control status-select" data-placeholder="Новый статус">
                     <option value="{{$client->current_status}}">{{$client->rustatus()}}</option>
 
@@ -52,10 +52,26 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-5">
+        <?php 
+            if (in_array($client->current_status, array('uv', 'dtf'))) {
+                $disabled = 'disabled';
+            } else {
+                $disabled = '';
+            }
+        ?>
+
+        <div class="col-12 col-md-4">
             <div class="card p-2">
                 <div class="input-group">
-                    
+                    <input type="number" id="printM" class="form-control" placeholder="Метраж принта" {{$disabled}}>
+                    <button class="btn btn-primary btn-save-printM" {{$disabled}}>Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card p-2">
+                <div class="input-group">
                     <input type="number" id="price" class="form-control" placeholder="Стоимость">
                     <button class="btn btn-primary btn-save-price">Сохранить</button>
                 </div>
@@ -110,6 +126,14 @@
 <script>
     const chatId = $('input[name="chat_id"]').val();
 
+    const toggleSupply = (state) => {
+        if (state == 'disable') state = true;
+        if (state == 'enable') state = false;
+
+        $('.btn-save-printM').attr('disabled', state);
+        $('#printM').attr('disabled', state);
+    };
+
     $('.btn-status-success').off('click').on('click', function () {
         $.ajax({
             url: '/changestatus',
@@ -122,14 +146,16 @@
             success: function (data) {
                 if (data.status == 'ok') {
                     $('.toast-body').text('Контакт переведён в статус завершён');
-
                     toastBootstrap.show();
+
+                    toggleSupply('disable');
                 }
             },
             error: function () {
                 $('.toast-body').text('Ошибка изменения статуса');
-                
                 toastBootstrap.show();
+
+                toggleSupply('enable');
             }
         });
     });
@@ -146,14 +172,16 @@
             success: function (data) {
                 if (data.status == 'ok') {
                     $('.toast-body').text('Контакт переведён в статус забракован');
-
                     toastBootstrap.show();
+
+                    toggleSupply('disable');
                 }
             },
             error: function () {
                 $('.toast-body').text('Ошибка изменения статуса');
-                
                 toastBootstrap.show();
+
+                toggleSupply('enable');
             }
         });
     });
@@ -177,7 +205,7 @@
                 }
             },
             error: function () {
-                $('.toast-body').text('Ошибка изменения статуса');
+                $('.toast-body').text('Ошибка сохранения суммы');
                 
                 toastBootstrap.show();
             }
@@ -185,6 +213,12 @@
     });
 
     $('.status-select').on('change', function() {
+        if (['uv', 'dtf'].includes($(this).val())) {
+            toggleSupply('enable');
+        } else {
+            toggleSupply('disable');
+        }
+        
         $.ajax({
             url: '/changestatus',
             method: 'POST',
@@ -196,14 +230,40 @@
             success: function (data) {
                 if (data.status == 'ok') {
                     $('.toast-body').text(`Статус успешно изменён на ${$(".status-select option:selected").text()}`);
-
                     toastBootstrap.show();
                 }
             },
             error: function () {
                 $('.toast-body').text('Ошибка изменения статуса');
-                
                 toastBootstrap.show();
+            }
+        });
+    });
+
+    $('.btn-save-printM').off('click').on('click', function () {
+        const count = $('#printM').val();
+
+        $.ajax({
+            url: '/setsupply',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                chatId: chatId,
+                amount: count
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    $('.toast-body').text('Метраж принта сохранён');
+                    toastBootstrap.show();
+
+                    toggleSupply('disable');
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка сохранения');
+                toastBootstrap.show();
+
+                toggleSupply('enable');
             }
         });
     });

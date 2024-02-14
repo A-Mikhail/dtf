@@ -49,6 +49,33 @@ class Client extends Eloquent {
 		return true;
 	}
 
+	public function supply($amount, $description, $bot = false) {
+		if ($bot) {
+			$user = User::where('id', '=', 3)->first();
+		} else {
+			$user = Auth::user();
+		}
+
+		$setSupply = array(
+			'author' =>  $user->id,
+			'chat_id' => $this->chat_id,
+			'amount' => $amount,
+			'description' => $description,
+			'created_at' => new DateTime()
+		);
+
+		DB::table('supplies')->insert($setSupply);
+
+		if ($bot) {
+			$this->log('price', 'Клиент вернулся. Сбрасываем метраж', true);
+		} else {
+			$this->log('price', 'Метраж изменён на ' . number_format($amount,0,'.',' ') . ' м');
+		}
+
+
+		return true;
+	}
+
 	public function getPrice() {
 		$deals = DB::table('deals')->where('chat_id', '=', $this->chat_id)->order_by('id', 'desc')->first();
 

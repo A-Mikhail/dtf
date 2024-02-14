@@ -70,6 +70,23 @@ class Client_Controller extends Base_Controller {
             return Response::json('Client is empty', 400);
         }
     }
+
+    public function post_setsupply() {
+        // Write to the log
+        $chatId = Input::get('chatId');
+        $amount = Input::get('amount');
+
+        $client = Client::where('chat_id', '=', $chatId)->first();
+
+        if (!is_null($client)) {
+            $client->supply($amount, 'Количество метража принта');
+
+            return Response::json(array('status'=>'ok', 'message'=>'supply successfully set', 'code'=>'0201'));
+        } else {
+            return Response::json('Client is empty', 400);
+        }
+    }
+    
     public function get_chatiframe() {
         $chatId = Input::get('chatId');
         $client = Client::where('chat_id', '=', $chatId)->first();

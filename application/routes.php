@@ -23,6 +23,7 @@ Route::group(array('before' => 'auth'), function () {
 	Route::get('/client/(:num)', array('uses' => 'client@index'));
 
 	Route::post('/setprice', array('uses'=>'client@setprice'));
+	Route::post('/setsupply', array('uses'=>'client@setsupply'));
 
 	Route::get('/wazzup/all', array('uses' => 'wazzupall@all'));
 
