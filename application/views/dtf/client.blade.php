@@ -160,7 +160,7 @@
                 <small class="mb-0 opacity-75">${author}</small>
             </div>
             <small class="opacity-50 text-nowrap">${time}</small>
-        </div>`).appendTo('list-group');
+        </div>`).prependTo('.list-group');
     };
 
     $('.btn-status-success').off('click').on('click', function () {
