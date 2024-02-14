@@ -25,6 +25,8 @@ Route::group(array('before' => 'auth'), function () {
 	Route::post('/setprice', array('uses'=>'client@setprice'));
 	Route::post('/setsupply', array('uses'=>'client@setsupply'));
 
+	Route::post('/comment/push', array('uses'=>'client@setcomment'));
+
 	Route::get('/wazzup/all', array('uses' => 'wazzupall@all'));
 
 	Route::get('/register', array('uses' => 'users@register'));

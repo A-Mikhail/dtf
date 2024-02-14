@@ -87,6 +87,22 @@ class Client_Controller extends Base_Controller {
         }
     }
     
+    public function post_setcomment() {
+        // Write to the log
+        $chatId = Input::get('chatId');
+        $text = Input::get('text');
+        $client = Client::where('chat_id', '=', $chatId)->first();
+        
+        if (!is_null($client)) {
+            $client->log('comment', $text);
+            $client->save();         
+
+            return Response::json(array('status'=>'ok', 'message'=>'comment is saved', 'code'=>'0203'));
+        } else {
+            return Response::json('Client is empty', 400);
+        }
+    }
+
     public function get_chatiframe() {
         $chatId = Input::get('chatId');
         $client = Client::where('chat_id', '=', $chatId)->first();

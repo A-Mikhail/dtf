@@ -83,11 +83,11 @@
         <div class="col-12 col-md-5 h-100">
             <div>
                 <div class="form-outline" data-mdb-input-init>
-                    <textarea class="form-control" id="textAreaComment" rows="4"></textarea>
+                    <textarea class="form-control" id="textAreaComment" rows="2"></textarea>
                     <label class="form-label" for="textAreaComment">Комментарий</label>
                 </div>
 
-                <button class="btn btn-primary btn-save-comment">Сохранить</button>
+                <button class="btn btn-primary btn-save-comment mt-2">Отправить</button>
             </div>
 
             @if($clientLog)
@@ -100,6 +100,8 @@
                             <h6 class="mb-0 fw-bold">Статус</h6>
                             @elseif($cl->type == 'price')
                             <h6 class="mb-0 fw-bold">Цена</h6>
+                            @elseif($cl->type == 'comment')
+                            <h6 class="mb-0 fw-bold">Комментарий</h6>
                             @endif
                             <p class="mb-0 opacity-75">{{$cl->comment}}</p>
                             <small class="mb-0 opacity-75">{{$cl->author}}</small>
@@ -267,6 +269,28 @@
                 toastBootstrap.show();
 
                 toggleSupply('enable');
+            }
+        });
+    });
+
+    $('.btn-save-comment').off('click').on('click', function () {
+        $.ajax({
+            url: '/comment/push',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                chatId: chatId,
+                text: $('#textAreaComment').val()
+            },
+            success: function (data) {
+                if (data.status == 'ok') {
+                    $('.toast-body').text('Комментарий сохранён');
+                    toastBootstrap.show();
+                }
+            },
+            error: function () {
+                $('.toast-body').text('Ошибка сохранения');
+                toastBootstrap.show();
             }
         });
     });
