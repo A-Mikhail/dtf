@@ -110,11 +110,13 @@ class Webhooks_Controller extends Base_Controller {
             // Source is hardcoded, because I don't use Wazzup create deal functional
             $client->source = 'self';
             $client->current_status = 'new';
+            $client->returned = 0;
     
             $client->save();
         } else {
             if ($client->current_status == 'reject' || $client->current_status == 'success') {
                 $client->current_status = 'new';
+                $client->returned = 1;
 
                 // If we have a previous price
                 if ($client->getPrice()) {
