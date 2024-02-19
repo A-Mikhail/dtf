@@ -23,7 +23,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="overflow-x: hidden;">
     <div class="row mt-4">
         <div class="col-12">
             <div id="kanban">
